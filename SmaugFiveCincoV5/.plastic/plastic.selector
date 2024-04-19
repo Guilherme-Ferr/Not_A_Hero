@@ -1,0 +1,4 @@
+repository "SmaugFiveCincoV5@XANOONAX@cloud"
+  path "/"
+    br "/main"
+    co "/main"
