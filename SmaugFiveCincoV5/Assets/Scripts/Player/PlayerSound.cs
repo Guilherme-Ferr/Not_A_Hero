@@ -10,11 +10,30 @@ public class PlayerSound : MonoBehaviour
     [SerializeField] public AudioSource woodFootSoundEffect;
     public Tilemap currentTilemap;
     private string currentGround;
+    private string currentGroundTag;
+    private PlayerData playerData;
+    private PlayerData.PlayerNoise playerNoise;
+
+    private void Start()
+    {
+        playerData = transform.GetComponent<PlayerData>();
+        playerNoise = playerData.GetComponent<PlayerData.PlayerNoise>();
+    }
+
+    private void Update()
+    {
+        Debug.Log(playerNoise);
+        UpdateNoiseState();
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         Tilemap tilemap = collision.gameObject.GetComponent<Tilemap>();
-        if (tilemap != null) currentGround = tilemap.name;
+        if (tilemap != null)
+        {
+            currentGround = tilemap.name;
+            currentGroundTag = tilemap.tag;
+        }
     }
 
     public void PlayFootStepsSound()
@@ -25,9 +44,27 @@ public class PlayerSound : MonoBehaviour
                 woodFootSoundEffect.Play();
                 break;
             case "Terrain":
-                grassFootSoundEffect.Play();
+                if (currentGroundTag == "PrisonFloor")
+                {
+                    woodFootSoundEffect.Play();
+                }
+                else
+                {
+                    grassFootSoundEffect.Play();
+                }
                 break;
             default: break;
         }
     }
+
+    private void UpdateNoiseState()
+    {
+        playerNoise = playerData.state switch
+        {
+            PlayerData.PlayerMovementState.walking or PlayerData.PlayerMovementState.jumping or PlayerData.PlayerMovementState.falling => PlayerData.PlayerNoise.mid,
+            PlayerData.PlayerMovementState.running => PlayerData.PlayerNoise.loud,
+            _ => PlayerData.PlayerNoise.none,
+        };
+    }
+
 }
