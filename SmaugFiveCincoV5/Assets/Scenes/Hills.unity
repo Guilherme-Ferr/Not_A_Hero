@@ -15956,13 +15956,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - {fileID: 8300000, guid: 37e0e77680329db4bb5b684e1d5ebdbb, type: 3}
-  - {fileID: 8300000, guid: 378bd45c3c0b04649b52ac675cca0381, type: 3}
   - {fileID: 8300000, guid: 8712c6019fbc31145982684a48ff64f4, type: 3}
-  - {fileID: 8300000, guid: 57b5246dc4c9a284091aecbd08cb7e68, type: 3}
-  - {fileID: 8300000, guid: e5c746ce63904a446b42ec0aa3e92a81, type: 3}
-  - {fileID: 8300000, guid: 9cc234412c380534aaefb1b7b248ad4e, type: 3}
   - {fileID: 8300000, guid: e5c746ce63904a446b42ec0aa3e92a81, type: 3}
   - {fileID: 8300000, guid: 37e0e77680329db4bb5b684e1d5ebdbb, type: 3}
+  - {fileID: 8300000, guid: e5c746ce63904a446b42ec0aa3e92a81, type: 3}
   interval: 20
 --- !u!1 &1475039087
 GameObject:
@@ -17828,6 +17825,10 @@ PrefabInstance:
       propertyPath: currentTilemap
       value: 
       objectReference: {fileID: 482871160}
+    - target: {fileID: 7766935881413571925, guid: e2bc6f6a4f91ff14791de2f17a9264d8, type: 3}
+      propertyPath: jumpableGround.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
