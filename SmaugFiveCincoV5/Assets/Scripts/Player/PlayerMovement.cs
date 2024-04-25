@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float runningSpeed = 5f;
     private float walkingSpeed = 3f;
     private float crouchingSpeed = 2f;
-    private float jumpForce = 5f;
+    private float jumpForce = 10f;
     private bool isJumping = false;
 
     [SerializeField] public PlayerData player;
