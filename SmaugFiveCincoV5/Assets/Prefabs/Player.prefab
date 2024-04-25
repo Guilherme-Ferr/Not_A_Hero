@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 7284016352418187565}
   - component: {fileID: 1150751428385566784}
   - component: {fileID: 1495461222560697627}
+  - component: {fileID: 8642932165085993564}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -228,6 +229,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4642035217936554389}
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &5314210867374570704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,3 +463,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8642932165085993564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640767241690880022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cccb8216fd9fd4347b02a6897c79cea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4642035217936554389}

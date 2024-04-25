@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectable
   - PrisonFloor
+  - Climbable
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,6 @@ public class PlayerSound : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(playerNoise);
         UpdateNoiseState();
     }
 
