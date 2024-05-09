@@ -10,19 +10,22 @@ public class CollectVegetables : MonoBehaviour
 
     public int totalItemsNeeded = 5;
     public int totalItemsDelivered = 0;
+    public bool finishedCollecting = false;
     private bool isDroping = false;
 
     private void Update()
     {
         if (textMesh != null)
         {
-            textMesh.text = "Colete suas plantações " + totalItemsDelivered + "/" + totalItemsNeeded;
+            if (totalItemsDelivered < totalItemsNeeded)
+            {
+                textMesh.text = "Colete suas plantações " + totalItemsDelivered + "/" + totalItemsNeeded;
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        // Collider2D collider1 = collision.gameObject.GetComponent<Collider2D>();
         if (collider.gameObject.CompareTag("Player") && !isDroping)
         {
             isDroping = true;
@@ -107,35 +110,6 @@ public class CollectVegetables : MonoBehaviour
             //     Debug.Log("Os objetos não estão se sobrepondo.");
             // }
         }
-        //     Debug.Log(collision.tag);
-
-        //     Collider2D boo = transform.GetComponent<Collider2D>();
-
-
-        //     if (collision.bounds.Intersects(boo.bounds))
-        //     {
-        //         // Os objetos estão se sobrepondo
-        //         Debug.Log("Os objetos estão se sobrepondo.");
-        //     }
-
-
-        //     if (collision.gameObject.CompareTag("Collectable"))
-        //     {
-        //         Debug.Log("coletou");
-
-        //         // BoxCollider2D itemCollider = collision.gameObject.GetComponent<BoxCollider2D>();
-        //         // itemCollider.isTrigger = false;
-
-
-        //         totalItemsNeeded++;
-        //         Destroy(collision.gameObject);
-        //         VerifyTotalItemsCollected();
-        //     }
-        // }
-
-
-        // (Collision2D collision)
-        // {
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -150,7 +124,8 @@ public class CollectVegetables : MonoBehaviour
         Debug.Log(totalItemsDelivered);
         if (totalItemsNeeded == totalItemsDelivered)
         {
-            Debug.Log("acabou a tarefa");
+            textMesh.text = "Volte para sua casa";
+            finishedCollecting = true;
         }
     }
 }

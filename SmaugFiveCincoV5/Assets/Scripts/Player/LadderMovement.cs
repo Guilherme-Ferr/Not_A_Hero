@@ -30,8 +30,6 @@ public class LadderMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(isTouchingLadder);
-
         if (isClimbing)
         {
             rb.gravityScale = 0f;
@@ -39,7 +37,7 @@ public class LadderMovement : MonoBehaviour
         }
         else
         {
-            rb.gravityScale = 4f;
+            rb.gravityScale = 3f;
         }
     }
 
