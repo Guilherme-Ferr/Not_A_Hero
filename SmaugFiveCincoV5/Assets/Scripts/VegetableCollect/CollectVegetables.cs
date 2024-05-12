@@ -120,8 +120,6 @@ public class CollectVegetables : MonoBehaviour
     private void VerifyTotalItemsCollected()
     {
         totalItemsDelivered++;
-
-        Debug.Log(totalItemsDelivered);
         if (totalItemsNeeded == totalItemsDelivered)
         {
             textMesh.text = "Volte para sua casa";
