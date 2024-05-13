@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             player.facingSide = PlayerData.FacingSide.right;
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                player.state = player.collectedStringshot ? PlayerData.PlayerMovementState.runningStringshot : PlayerData.PlayerMovementState.running;
+                player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
             }
             else
             {
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    player.state = player.collectedStringshot ? PlayerData.PlayerMovementState.walkingStringshot : PlayerData.PlayerMovementState.walking;
+                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
                 }
             }
         }
@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             player.facingSide = PlayerData.FacingSide.left;
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                player.state = player.collectedStringshot ? PlayerData.PlayerMovementState.runningStringshot : PlayerData.PlayerMovementState.running;
+                player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
             }
             else
             {
@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    player.state = player.collectedStringshot ? PlayerData.PlayerMovementState.walkingStringshot : PlayerData.PlayerMovementState.walking;
+                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
                 }
             }
         }
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                player.state = player.collectedStringshot ? PlayerData.PlayerMovementState.idleStringshot : PlayerData.PlayerMovementState.idle;
+                player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
             }
         }
 
@@ -97,8 +97,8 @@ public class PlayerMovement : MonoBehaviour
     {
         return player.state switch
         {
-            PlayerData.PlayerMovementState.walking or PlayerData.PlayerMovementState.walkingStringshot => walkingSpeed,
-            PlayerData.PlayerMovementState.running or PlayerData.PlayerMovementState.runningStringshot => runningSpeed,
+            PlayerData.PlayerMovementState.walking or PlayerData.PlayerMovementState.walkingSlingshot => walkingSpeed,
+            PlayerData.PlayerMovementState.running or PlayerData.PlayerMovementState.runningSlingshot => runningSpeed,
             PlayerData.PlayerMovementState.crouching => crouchingSpeed,
             _ => 0f,
         };

@@ -60,8 +60,12 @@ public class PlayerSound : MonoBehaviour
     {
         playerNoise = playerData.state switch
         {
-            PlayerData.PlayerMovementState.walking or PlayerData.PlayerMovementState.jumping or PlayerData.PlayerMovementState.falling => PlayerData.PlayerNoise.mid,
-            PlayerData.PlayerMovementState.running => PlayerData.PlayerNoise.loud,
+            PlayerData.PlayerMovementState.walking or
+            PlayerData.PlayerMovementState.walkingSlingshot or
+            PlayerData.PlayerMovementState.jumping or
+            PlayerData.PlayerMovementState.falling => PlayerData.PlayerNoise.mid,
+            PlayerData.PlayerMovementState.running or
+            PlayerData.PlayerMovementState.runningSlingshot => PlayerData.PlayerNoise.loud,
             _ => PlayerData.PlayerNoise.none,
         };
     }
