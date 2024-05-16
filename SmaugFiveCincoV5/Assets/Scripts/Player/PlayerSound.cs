@@ -25,7 +25,7 @@ public class PlayerSound : MonoBehaviour
         UpdateNoiseState();
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void lingshotlisionStay2D(Collision2D collision)
     {
         Tilemap tilemap = collision.gameObject.GetComponent<Tilemap>();
         if (tilemap != null)

@@ -13,7 +13,15 @@ public class PlayerMovement : MonoBehaviour
     private float walkingSpeed = 3f;
     private float crouchingSpeed = 2f;
     private float jumpForce = 10f;
-    private bool isJumping = false;
+    public bool isJumping = false;
+    public LayerMask tilesetLayer;
+    public LayerMask groundLayer;  // Assign this in the Inspector to the "Ground" layer
+
+
+    // public Transform groundCheck;  // Referência ao objeto GroundCheck
+    public float checkRadius = 0.1f;  // Raio do círculo de verificação
+
+    public bool isGrounded;
 
     [SerializeField] public PlayerData player;
     [SerializeField] private LayerMask jumpableGround;
@@ -24,10 +32,10 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
     }
 
-    private void Update()
-    {
-        MovePlayer();
-    }
+    // private void Update()
+    // {
+
+    // }
 
     private void MovePlayer()
     {
@@ -85,12 +93,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            // isGrounded = false;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            isJumping = true;
         }
-
     }
 
     private float ControlPlayerSpeed()
@@ -104,11 +111,83 @@ public class PlayerMovement : MonoBehaviour
         };
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Update()
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+        // Debug.Log(isJumping);
+        MovePlayer();
+        // IsGrounded();
+    }
+
+
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (IsTouchingGround(collision))
         {
-            isJumping = false;
+            isGrounded = true;
+            Debug.Log("Touching the ground.");
         }
     }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (IsTouchingGround(collision))
+        {
+            isGrounded = false;
+            Debug.Log("Not touching the ground.");
+        }
+    }
+
+    private bool IsTouchingGround(Collider2D collision)
+    {
+        return (groundLayer & (1 << collision.gameObject.layer)) != 0;
+    }
+
+    public bool IsGrounded()
+    {
+        return isGrounded;
+    }
+
+
+    // bool IsTouchingTileset()
+    // {
+    //     float distanceToCheck = 0.1f; // Distância pequena para verificar proximidade
+    //     Vector2 direction = Vector2.down; // Direção do raycast (para baixo)
+
+    //     // Realiza um raycast do centro do personagem para a direção especificada
+    //     RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToCheck, tilesetLayer);
+
+    //     // Se o raycast colidir com algo na camada do tileset, retorna true
+    //     return hit.collider != null;
+    // }
+
+
+    // private bool IsTouchingTileset()
+    // {
+    //     float distanceToCheck = 1f; // Distância pequena para verificar proximidade
+    //     Vector2 direction = Vector2.down; // Direção do raycast (para baixo)
+
+    //     // Realiza um raycast do centro do personagem para a direção especificada
+    //     RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToCheck, tilesetLayer);
+
+    //     // Se o raycast colidir com algo na camada do tileset, retorna true
+    //     return hit.collider != null;
+    // }
+
+    //     void CheckIfGrounded()
+    // {
+    //     // Verifica se o GroundCheck está colidindo com algo na camada groundLayer
+    //     isGrounded = Physics2D.OverlapCircle(transform.position, checkRadius, groundLayer);
+
+    //     if (isGrounded)
+    //     {
+    //         Debug.Log("O personagem está encostando no tileset do chão.");
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("O personagem não está encostando no tileset do chão.");
+    //     }
+    // }
+
 }

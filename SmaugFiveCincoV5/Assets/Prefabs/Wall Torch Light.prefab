@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6085607732645900561}
   - component: {fileID: 758591040339626073}
+  - component: {fileID: -3346519905088293578}
   m_Layer: 7
   m_Name: Wall Torch Light
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.57756954, b: 0.2028302, a: 1}
+  m_Color: {r: 1, g: 0.62849677, b: 0.20392156, a: 0.69803923}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -71,7 +72,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 10
+  m_PointLightOuterRadius: 6
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -82,3 +83,20 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &-3346519905088293578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144490806643423174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3378d7f0ee92b0640bd729656ea99ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseIntensity: 2
+  flickerAmount: 2
+  flickerSpeed: 4
+  baseOuterRadius: 5
+  radiusFlickerAmount: 0.7
