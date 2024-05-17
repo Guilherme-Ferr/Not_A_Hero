@@ -12,12 +12,13 @@ public class PlayerSound : MonoBehaviour
     private string currentGround;
     private string currentGroundTag;
     private PlayerData playerData;
-    private PlayerData.PlayerNoise playerNoise;
+    public enum PlayerNoise { none, mid, loud }
+    // private PlayerNoise playerNoise;
 
     private void Start()
     {
         playerData = transform.GetComponent<PlayerData>();
-        playerNoise = playerData.GetComponent<PlayerData.PlayerNoise>();
+        // playerNoise = playerData.GetComponent<PlayerNoise>();
     }
 
     private void Update()
@@ -58,16 +59,16 @@ public class PlayerSound : MonoBehaviour
 
     private void UpdateNoiseState()
     {
-        playerNoise = playerData.state switch
-        {
-            PlayerData.PlayerMovementState.walking or
-            PlayerData.PlayerMovementState.walkingSlingshot or
-            PlayerData.PlayerMovementState.jumping or
-            PlayerData.PlayerMovementState.falling => PlayerData.PlayerNoise.mid,
-            PlayerData.PlayerMovementState.running or
-            PlayerData.PlayerMovementState.runningSlingshot => PlayerData.PlayerNoise.loud,
-            _ => PlayerData.PlayerNoise.none,
-        };
+        // playerNoise = playerData.state switch
+        // {
+        //     PlayerData.PlayerMovementState.walking or
+        //     PlayerData.PlayerMovementState.walkingSlingshot or
+        //     PlayerData.PlayerMovementState.jumping or
+        //     PlayerData.PlayerMovementState.falling => PlayerNoise.mid,
+        //     PlayerData.PlayerMovementState.running or
+        //     PlayerData.PlayerMovementState.runningSlingshot => PlayerNoise.loud,
+        //     _ => PlayerNoise.none,
+        // };
     }
 
 }

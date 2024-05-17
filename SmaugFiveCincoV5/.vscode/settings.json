@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "SmaugFiveCincoV5.sln"
+    "dotnet.defaultSolution": "SmaugFiveCincoV5.sln",
+    "dotnet.preferCSharpExtension": true
 }

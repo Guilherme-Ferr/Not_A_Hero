@@ -13,18 +13,10 @@ public class PlayerMovement : MonoBehaviour
     private float walkingSpeed = 3f;
     private float crouchingSpeed = 2f;
     private float jumpForce = 10f;
-    public bool isJumping = false;
-    public LayerMask tilesetLayer;
-    public LayerMask groundLayer;  // Assign this in the Inspector to the "Ground" layer
-
-
-    // public Transform groundCheck;  // Referência ao objeto GroundCheck
-    public float checkRadius = 0.1f;  // Raio do círculo de verificação
-
-    public bool isGrounded;
+    public CapsuleCollider2D groundCheck;
+    public LayerMask groundLayer;
 
     [SerializeField] public PlayerData player;
-    [SerializeField] private LayerMask jumpableGround;
 
     private void Start()
     {
@@ -32,10 +24,24 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
     }
 
-    // private void Update()
-    // {
+    private void Update()
+    {
+        MovePlayer();
+        JumpPlayer();
+    }
 
-    // }
+    private void JumpPlayer()
+    {
+        if (Input.GetButtonDown("Jump") && isGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+    }
+
+    private bool isGrounded()
+    {
+        return Physics2D.OverlapCapsule(groundCheck.transform.position, groundCheck.size, groundCheck.direction, 0, groundLayer);
+    }
 
     private void MovePlayer()
     {
@@ -92,12 +98,6 @@ public class PlayerMovement : MonoBehaviour
                 player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // isGrounded = false;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
     }
 
     private float ControlPlayerSpeed()
@@ -110,84 +110,4 @@ public class PlayerMovement : MonoBehaviour
             _ => 0f,
         };
     }
-
-    void Update()
-    {
-        // Debug.Log(isJumping);
-        MovePlayer();
-        // IsGrounded();
-    }
-
-
-
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (IsTouchingGround(collision))
-        {
-            isGrounded = true;
-            Debug.Log("Touching the ground.");
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (IsTouchingGround(collision))
-        {
-            isGrounded = false;
-            Debug.Log("Not touching the ground.");
-        }
-    }
-
-    private bool IsTouchingGround(Collider2D collision)
-    {
-        return (groundLayer & (1 << collision.gameObject.layer)) != 0;
-    }
-
-    public bool IsGrounded()
-    {
-        return isGrounded;
-    }
-
-
-    // bool IsTouchingTileset()
-    // {
-    //     float distanceToCheck = 0.1f; // Distância pequena para verificar proximidade
-    //     Vector2 direction = Vector2.down; // Direção do raycast (para baixo)
-
-    //     // Realiza um raycast do centro do personagem para a direção especificada
-    //     RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToCheck, tilesetLayer);
-
-    //     // Se o raycast colidir com algo na camada do tileset, retorna true
-    //     return hit.collider != null;
-    // }
-
-
-    // private bool IsTouchingTileset()
-    // {
-    //     float distanceToCheck = 1f; // Distância pequena para verificar proximidade
-    //     Vector2 direction = Vector2.down; // Direção do raycast (para baixo)
-
-    //     // Realiza um raycast do centro do personagem para a direção especificada
-    //     RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distanceToCheck, tilesetLayer);
-
-    //     // Se o raycast colidir com algo na camada do tileset, retorna true
-    //     return hit.collider != null;
-    // }
-
-    //     void CheckIfGrounded()
-    // {
-    //     // Verifica se o GroundCheck está colidindo com algo na camada groundLayer
-    //     isGrounded = Physics2D.OverlapCircle(transform.position, checkRadius, groundLayer);
-
-    //     if (isGrounded)
-    //     {
-    //         Debug.Log("O personagem está encostando no tileset do chão.");
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("O personagem não está encostando no tileset do chão.");
-    //     }
-    // }
-
 }
