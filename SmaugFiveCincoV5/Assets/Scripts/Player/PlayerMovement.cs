@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private BoxCollider2D coll;
     private float dirX = 0f;
     private float runningSpeed = 5f;
     private float walkingSpeed = 3f;
@@ -21,13 +20,15 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
     {
-        MovePlayer();
-        JumpPlayer();
+        if (!player.dead)
+        {
+            MovePlayer();
+            JumpPlayer();
+        }
     }
 
     private void JumpPlayer()
@@ -48,6 +49,20 @@ public class PlayerMovement : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         float moveSpeed = ControlPlayerSpeed();
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+
+
+
+        // if (rb.velocity.y > .1f)
+        // {
+        //     player.state = PlayerData.PlayerMovementState.jumping;
+        // }
+
+        // else if (rb.velocity.y < -.1f)
+        // {
+        //     player.state = PlayerData.PlayerMovementState.falling;
+        // }
+        // else
+        // {
 
         if (dirX > 0f)
         {

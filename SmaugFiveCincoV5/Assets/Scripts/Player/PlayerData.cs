@@ -10,4 +10,5 @@ public class PlayerData : MonoBehaviour
     public PlayerMovementState state = PlayerMovementState.idle;
     public int itemSelectedPosition = 0;
     public bool collectedSlingshot = false;
+    public bool dead = false;
 }

@@ -17,8 +17,11 @@ public class PlayerAnimation : MonoBehaviour
 
     void Update()
     {
-        UpdateAnimationState();
-        FlipSpriteSide();
+        if (!player.dead)
+        {
+            UpdateAnimationState();
+            FlipSpriteSide();
+        }
     }
 
     private void UpdateAnimationState()
