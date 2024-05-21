@@ -5,7 +5,23 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     public enum FacingSide { left, right }
-    public enum PlayerMovementState { idle, walking, running, crouching, jumping, falling, climbing, idleSlingshot, walkingSlingshot, runningSlingshot }
+    public enum PlayerMovementState
+    {
+        idle,
+        walking,
+        running,
+        crouching,
+        jumping,
+        falling,
+        climbing,
+        idleSlingshot,
+        walkingSlingshot,
+        runningSlingshot,
+        jumpingSlingshot,
+        landing,
+        landingSlingshot,
+        fallingSlingshot,
+    }
     public FacingSide facingSide = FacingSide.right;
     public PlayerMovementState state = PlayerMovementState.idle;
     public int itemSelectedPosition = 0;

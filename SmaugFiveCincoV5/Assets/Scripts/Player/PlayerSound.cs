@@ -8,7 +8,7 @@ public class PlayerSound : MonoBehaviour
 {
     [SerializeField] public AudioSource grassFootSoundEffect;
     [SerializeField] public AudioSource woodFootSoundEffect;
-    public Tilemap currentTilemap;
+    // public Tilemap currentTilemap;
     private string currentGround;
     private string currentGroundTag;
     private PlayerData playerData;
