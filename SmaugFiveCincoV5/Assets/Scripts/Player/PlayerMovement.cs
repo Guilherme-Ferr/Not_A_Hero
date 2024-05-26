@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.landing)
+            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot)
             {
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
