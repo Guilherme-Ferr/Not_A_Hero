@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if (Input.GetButtonDown("Jump") && IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot)
+        if (Input.GetButtonDown("Jump") && IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         if (dirX > 0f)
         {
             player.facingSide = PlayerData.FacingSide.right;
-            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot)
+            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         else if (dirX < 0f)
         {
             player.facingSide = PlayerData.FacingSide.left;
-            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot)
+            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
@@ -123,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot)
+            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
             {
                 if (Input.GetKey(KeyCode.LeftControl))
                 {
@@ -152,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
     void SetIdle()
     {
         player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
     private float ControlPlayerSpeed()
