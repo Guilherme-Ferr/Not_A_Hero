@@ -55,7 +55,7 @@ public class LadderMovement : MonoBehaviour
         {
             isTouchingLadder = false;
             isClimbing = false;
-            player.state = PlayerData.PlayerMovementState.idle;
+            player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
         }
     }
 }

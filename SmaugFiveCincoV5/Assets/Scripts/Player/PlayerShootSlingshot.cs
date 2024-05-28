@@ -19,7 +19,7 @@ public class PlayerShootSlingshot : MonoBehaviour
 
     private void ShootgSlingshot()
     {
-        if (Input.GetMouseButtonDown(0) && player.collectedSlingshot && (
+        if (Input.GetKey(KeyCode.Z) && player.collectedSlingshot && (
                 player.state == PlayerData.PlayerMovementState.idleSlingshot ||
                 player.state == PlayerData.PlayerMovementState.walkingSlingshot ||
                 player.state == PlayerData.PlayerMovementState.runningSlingshot ||
