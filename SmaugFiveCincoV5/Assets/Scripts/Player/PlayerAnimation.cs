@@ -31,6 +31,9 @@ public class PlayerAnimation : MonoBehaviour
 
     private void FlipSpriteSide()
     {
-        sprite.flipX = player.facingSide == PlayerData.FacingSide.left;
+        if (player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+        {
+            sprite.flipX = player.facingSide == PlayerData.FacingSide.left;
+        }
     }
 }

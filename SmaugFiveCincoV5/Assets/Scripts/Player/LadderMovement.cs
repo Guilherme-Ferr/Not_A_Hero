@@ -5,7 +5,7 @@ using UnityEngine;
 public class LadderMovement : MonoBehaviour
 {
     private float vertical;
-    private float climbSpeed = 3f;
+    private float climbSpeed = 2f;
     private bool isTouchingLadder;
     private bool isClimbing;
     private Rigidbody2D rb;
