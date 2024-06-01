@@ -21,7 +21,9 @@ public class PlayerData : MonoBehaviour
         landing,
         landingSlingshot,
         fallingSlingshot,
-        shootingSlingshot
+        shootingSlingshot,
+        climbingBridge,
+        dropingBridge,
     }
     public FacingSide facingSide = FacingSide.right;
     public PlayerMovementState state = PlayerMovementState.idle;

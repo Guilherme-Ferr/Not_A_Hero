@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.state != PlayerData.PlayerMovementState.dropingBridge && player.state != PlayerData.PlayerMovementState.climbingBridge && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -55,16 +55,77 @@ public class PlayerMovement : MonoBehaviour
         float moveSpeed = ControlPlayerSpeed();
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-        if (dirX > 0f)
+        if (player.state != PlayerData.PlayerMovementState.climbingBridge)
         {
-            player.facingSide = PlayerData.FacingSide.right;
-            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+            if (dirX > 0f)
             {
-                if (Input.GetKey(KeyCode.LeftShift))
+                player.facingSide = PlayerData.FacingSide.right;
+                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
                 {
-                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
+                    }
+                    else
+                    {
+                        if (Input.GetKey(KeyCode.LeftControl))
+                        {
+                            player.state = PlayerData.PlayerMovementState.crouching;
+                        }
+                        else
+                        {
+                            player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                        }
+                    }
                 }
                 else
+                {
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    {
+                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
+                    }
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    {
+                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
+                    }
+                }
+            }
+            else if (dirX < 0f)
+            {
+                player.facingSide = PlayerData.FacingSide.left;
+                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+                {
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
+                    }
+                    else
+                    {
+                        if (Input.GetKey(KeyCode.LeftControl))
+                        {
+                            player.state = PlayerData.PlayerMovementState.crouching;
+                        }
+                        else
+                        {
+                            player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                        }
+                    }
+                }
+                else
+                {
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    {
+                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
+                    }
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    {
+                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
+                    }
+                }
+            }
+            else
+            {
+                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
                 {
                     if (Input.GetKey(KeyCode.LeftControl))
                     {
@@ -72,78 +133,20 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                        SetIdle();
                     }
-                }
-            }
-            else
-            {
-                if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
-                {
-                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
-                }
-                else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
-                {
-                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
-                }
-            }
-        }
-        else if (dirX < 0f)
-        {
-            player.facingSide = PlayerData.FacingSide.left;
-            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
-            {
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
                 }
                 else
                 {
-                    if (Input.GetKey(KeyCode.LeftControl))
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
                     {
-                        player.state = PlayerData.PlayerMovementState.crouching;
+                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
-                    }
-                }
-            }
-            else
-            {
-                if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
-                {
-                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
-                }
-                else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
-                {
-                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
-                }
-            }
-        }
-        else
-        {
-            if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
-            {
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    player.state = PlayerData.PlayerMovementState.crouching;
-                }
-                else
-                {
-                    SetIdle();
-                }
-            }
-            else
-            {
-                if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
-                {
-                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
-                }
-                else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
-                {
-                    player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
+                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
 
+                    }
                 }
             }
         }
