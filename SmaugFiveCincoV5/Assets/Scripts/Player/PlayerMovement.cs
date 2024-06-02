@@ -8,9 +8,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float dirX = 0f;
-    private float runningSpeed = 5f;
+    private float runningSpeed = 4f;
     private float walkingSpeed = 3f;
-    private float crouchingSpeed = 2f;
+    private float crouchingSpeed = 1.5f;
     private float jumpForce = 10f;
     public CapsuleCollider2D groundCheck;
     public LayerMask groundLayer;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.state != PlayerData.PlayerMovementState.dropingBridge && player.state != PlayerData.PlayerMovementState.climbingBridge && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.state != PlayerData.PlayerMovementState.dropingBridge && player.state != PlayerData.PlayerMovementState.climbingBridge && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
