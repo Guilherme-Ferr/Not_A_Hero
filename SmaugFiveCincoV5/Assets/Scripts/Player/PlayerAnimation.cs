@@ -6,13 +6,13 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Animator anim;
     private SpriteRenderer sprite;
-
-    [SerializeField] public PlayerData player;
+    private PlayerData player;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        player = GetComponent<PlayerData>();
     }
 
     void Update()
