@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ccb8a19864a6443a91848554aacd5c, type: 3}
+  m_Name: E Caramello
+  m_EditorClassIdentifier: 
+  actor: {fileID: 3069920079245875116, guid: cf3cd1de529186448af83b1d3d35de61, type: 3}
+  speakerSprite: {fileID: 0}
+  sentence: 
+  dialogues:
+  - actorName: E. Caramello
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: "E. Caramello: Nossa, voc\xEA ta com uma cara p\xE9ssima"
+      english: 
+  - actorName: E. Caramello
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: "E. Caramello: Como foi parar a\xED? Ah, n\xE3o importa, muita
+        coisa vem acontecendo ultimamente..."
+      english: 
+  - actorName: E. Caramello
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: "E. Caramello: Bom, mas se quiser sair da\xED, por que n\xE3o tenta
+        pegar esse estilingue ai na sua cela e atirar em dire\xE7\xE3o a parede?"
+      english: 
+  - actorName: E. Caramello
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: "E. Caramello: N\xE3o, eu n\xE3o acho que voc\xEA seja super forte
+        a ponto de quebrar a parede, acontece que teve alguns tremores recentes e
+        algumas estruturas est\xE3o fragilizadas."
+      english: 
+  - actorName: E. Caramello
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: "E. Caramello: E a cela ao lado est\xE1 com o port\xE3o quebrado,
+        eu poderia continuar dizendo como voc\xEA pode escapar daqui, mas eu odeio
+        tutoriais. Boa sorte."
+      english: 
