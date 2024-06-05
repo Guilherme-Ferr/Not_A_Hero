@@ -7,15 +7,16 @@ public class GuardHearing : MonoBehaviour
     public GuardData guard;
     private PlayerSound playerSound;
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerSound = other.gameObject.GetComponent<PlayerSound>();
-            if (playerSound.playerNoise == PlayerSound.PlayerNoise.mid || playerSound.playerNoise == PlayerSound.PlayerNoise.loud)
-            {
-                guard.canHearPlayer = true;
-            }
+            Debug.Log("houve sim");
+            // playerSound = other.gameObject.GetComponent<PlayerSound>();
+            // if (playerSound.playerNoise == PlayerSound.PlayerNoise.mid || playerSound.playerNoise == PlayerSound.PlayerNoise.loud)
+            // {
+            //     guard.canHearPlayer = true;
+            // }
         }
     }
 
@@ -23,7 +24,8 @@ public class GuardHearing : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            guard.canHearPlayer = false;
+            Debug.Log("nao houve");
+            // guard.aggro = true;
         }
     }
 }

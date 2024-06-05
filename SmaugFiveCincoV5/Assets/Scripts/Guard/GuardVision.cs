@@ -24,7 +24,7 @@ public class GuardVision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            guardData.canSeePlayer = true;
+            // guardData.canSeePlayer = true;
         }
     }
 
@@ -32,7 +32,7 @@ public class GuardVision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            guardData.canSeePlayer = false;
+            // guardData.canSeePlayer = false;
         }
     }
 

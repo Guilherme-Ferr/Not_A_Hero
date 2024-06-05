@@ -7,7 +7,6 @@ public class GuardMovement : MonoBehaviour
 {
     public Transform target;
     private Rigidbody2D rb;
-    private BoxCollider2D coll;
     private float moveSpeed = 3.5f;
     public CapsuleCollider2D groundCheck;
     public LayerMask groundLayer;
@@ -17,12 +16,10 @@ public class GuardMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
     {
-        Debug.Log(guard.aggro);
         while (guard.aggro == true)
         {
             MoveGuard();

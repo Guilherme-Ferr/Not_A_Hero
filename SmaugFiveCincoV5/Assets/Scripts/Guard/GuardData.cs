@@ -12,7 +12,8 @@ public class GuardData : MonoBehaviour
         jumping,
         falling,
         landing,
-        attacking
+        attacking,
+        sleeping
     }
     public FacingSide facingSide = FacingSide.right;
     public GuardMovementState state = GuardMovementState.running;
@@ -20,17 +21,25 @@ public class GuardData : MonoBehaviour
     public bool canSeePlayer = false;
     public bool aggro = false;
     public bool dead = false;
+    public bool isSleepyGuard;
 
     private void Update()
     {
-        if (canHearPlayer || canSeePlayer)
+
+        if (aggro)
         {
-            aggro = true;
+            state = GuardMovementState.idle;
         }
 
-        if (!canHearPlayer && !canSeePlayer)
-        {
-            aggro = false;
-        }
+
+        //     if (canHearPlayer || canSeePlayer)
+        //     {
+        //         aggro = true;
+        //     }
+
+        //     if (!canHearPlayer && !canSeePlayer)
+        //     {
+        //         aggro = false;
+        //     }
     }
 }

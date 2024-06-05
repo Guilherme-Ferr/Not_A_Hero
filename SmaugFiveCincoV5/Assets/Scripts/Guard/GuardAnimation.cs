@@ -18,7 +18,10 @@ public class GuardAnimation : MonoBehaviour
     void Update()
     {
         UpdateAnimationState();
-        FlipSpriteSide();
+        while (guard.aggro)
+        {
+            FlipSpriteSide();
+        }
     }
 
     private void UpdateAnimationState()
