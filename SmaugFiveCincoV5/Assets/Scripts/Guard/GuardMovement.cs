@@ -22,7 +22,8 @@ public class GuardMovement : MonoBehaviour
 
     private void Update()
     {
-        if (guard.aggro)
+        Debug.Log(guard.aggro);
+        while (guard.aggro == true)
         {
             MoveGuard();
         }
@@ -31,7 +32,7 @@ public class GuardMovement : MonoBehaviour
 
     public void JumpGuard()
     {
-        if (IsGrounded())
+        if (IsGrounded() && guard.aggro)
         {
             rb.velocity = new Vector2(rb.velocity.x, 6f);
         }

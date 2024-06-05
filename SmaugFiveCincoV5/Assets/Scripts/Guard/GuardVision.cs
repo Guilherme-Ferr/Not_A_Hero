@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class GuardVision : MonoBehaviour
 {
-    public GuardData guard;
+    public Transform guard;
+    public GuardData guardData;
 
     private void Update()
     {
-        FlipSpriteSide();
+        //     FlipSpriteSide();
+        // }
+
+        // private void FlipSpriteSide()
+        // {
+        //     float positionY = (float)(guard.position.y + 0.5);
+        //     transform.position = guardData.facingSide == GuardData.FacingSide.left ?
+        //     new Vector2((float)(guard.position.x - 4), positionY) :
+        //     new Vector2((float)(guard.position.x + 4), positionY);
     }
 
-    private void FlipSpriteSide()
-    {
-        if (guard.facingSide == GuardData.FacingSide.left)
-        {
-
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            guard.canSeePlayer = true;
+            guardData.canSeePlayer = true;
         }
     }
 
@@ -31,7 +32,7 @@ public class GuardVision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            guard.canSeePlayer = false;
+            guardData.canSeePlayer = false;
         }
     }
 
