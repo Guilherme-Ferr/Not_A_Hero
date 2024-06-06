@@ -7,6 +7,8 @@ using UnityEngine.Tilemaps;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private PlayerMovement playerd;
+    public bool isPaused;
     private float dirX = 0f;
     private float runningSpeed = 4f;
     private float walkingSpeed = 3f;
