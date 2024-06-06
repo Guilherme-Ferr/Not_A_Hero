@@ -11,12 +11,13 @@ public class GuardHearing : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("houve sim");
-            // playerSound = other.gameObject.GetComponent<PlayerSound>();
-            // if (playerSound.playerNoise == PlayerSound.PlayerNoise.mid || playerSound.playerNoise == PlayerSound.PlayerNoise.loud)
-            // {
-            //     guard.canHearPlayer = true;
-            // }
+            playerSound = other.gameObject.GetComponent<PlayerSound>();
+            if (playerSound.playerNoise == PlayerSound.PlayerNoise.mid || playerSound.playerNoise == PlayerSound.PlayerNoise.loud)
+            {
+                Debug.Log("houve sim");
+                guard.canHearPlayer = true;
+                guard.aggro = true;
+            }
         }
     }
 
@@ -25,7 +26,9 @@ public class GuardHearing : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("nao houve");
-            // guard.aggro = true;
+            guard.canHearPlayer = false;
+            guard.aggro = false;
+
         }
     }
 }

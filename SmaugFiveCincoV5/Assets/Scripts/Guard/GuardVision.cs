@@ -20,7 +20,7 @@ public class GuardVision : MonoBehaviour
         //     new Vector2((float)(guard.position.x + 4), positionY);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

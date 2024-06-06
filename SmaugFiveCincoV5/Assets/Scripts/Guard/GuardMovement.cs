@@ -10,8 +10,7 @@ public class GuardMovement : MonoBehaviour
     private float moveSpeed = 3.5f;
     public CapsuleCollider2D groundCheck;
     public LayerMask groundLayer;
-
-    [SerializeField] public GuardData guard;
+    public GuardData guard;
 
     private void Start()
     {
@@ -20,10 +19,7 @@ public class GuardMovement : MonoBehaviour
 
     private void Update()
     {
-        while (guard.aggro == true)
-        {
-            MoveGuard();
-        }
+        MoveGuard();
         IsGrounded();
     }
 
@@ -47,43 +43,47 @@ public class GuardMovement : MonoBehaviour
 
     private void MoveGuard()
     {
-        // Player na esquerda
-        if (target.position.x < transform.position.x - 1.5f)
+        if (guard.aggro)
         {
-            if (rb.velocity.y > .1f)
+            Debug.Log(guard.aggro);
+            // Player na esquerda
+            if (target.position.x < transform.position.x - 1.5f)
             {
-                guard.state = GuardData.GuardMovementState.jumping;
+                if (rb.velocity.y > .1f)
+                {
+                    guard.state = GuardData.GuardMovementState.jumping;
+                }
+                else if (rb.velocity.y < -.1f)
+                {
+                    guard.state = GuardData.GuardMovementState.falling;
+                }
+                else
+                {
+                    guard.state = GuardData.GuardMovementState.running;
+                }
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+                guard.facingSide = GuardData.FacingSide.left;
             }
-            else if (rb.velocity.y < -.1f)
+            // Player na direita
+            else if (target.position.x > transform.position.x + 1.5f)
             {
-                guard.state = GuardData.GuardMovementState.falling;
+                if (rb.velocity.y > .1f)
+                {
+                    guard.state = GuardData.GuardMovementState.jumping;
+                }
+                else if (rb.velocity.y < -.1f)
+                {
+                    guard.state = GuardData.GuardMovementState.falling;
+                }
+                else
+                {
+                    guard.state = GuardData.GuardMovementState.running;
+                }
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+                guard.facingSide = GuardData.FacingSide.right;
             }
-            else
-            {
-                guard.state = GuardData.GuardMovementState.running;
-            }
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-            guard.facingSide = GuardData.FacingSide.left;
-        }
-        // Player na direita
-        else if (target.position.x > transform.position.x + 1.5f)
-        {
-            if (rb.velocity.y > .1f)
-            {
-                guard.state = GuardData.GuardMovementState.jumping;
-            }
-            else if (rb.velocity.y < -.1f)
-            {
-                guard.state = GuardData.GuardMovementState.falling;
-            }
-            else
-            {
-                guard.state = GuardData.GuardMovementState.running;
-            }
-            rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-            guard.facingSide = GuardData.FacingSide.right;
         }
     }
 }

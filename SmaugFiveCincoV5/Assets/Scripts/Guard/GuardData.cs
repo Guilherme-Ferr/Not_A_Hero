@@ -26,10 +26,10 @@ public class GuardData : MonoBehaviour
     private void Update()
     {
 
-        if (aggro)
-        {
-            state = GuardMovementState.idle;
-        }
+        // if (aggro)
+        // {
+        //     state = GuardMovementState.idle;
+        // }
 
 
         //     if (canHearPlayer || canSeePlayer)
