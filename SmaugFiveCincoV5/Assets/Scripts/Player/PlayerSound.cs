@@ -6,14 +6,14 @@ using UnityEngine.Tilemaps;
 
 public class PlayerSound : MonoBehaviour
 {
-    [SerializeField] public AudioSource grassFootSoundEffect;
-    [SerializeField] public AudioSource woodFootSoundEffect;
-    // public Tilemap currentTilemap;
-    private string currentGround;
-    private string currentGroundTag;
+    public AudioSource grassFootSoundEffect;
+    public AudioSource woodFootSoundEffect;
+    public AudioSource stoneFootSoundEffect;
     private PlayerData playerData;
     public enum PlayerNoise { none, mid, loud }
     public PlayerNoise playerNoise;
+    private string groundTag;
+    private bool isPlayng;
 
     private void Start()
     {
@@ -23,37 +23,6 @@ public class PlayerSound : MonoBehaviour
     private void Update()
     {
         UpdateNoiseState();
-    }
-
-    private void lingshotlisionStay2D(Collision2D collision)
-    {
-        Tilemap tilemap = collision.gameObject.GetComponent<Tilemap>();
-        if (tilemap != null)
-        {
-            currentGround = tilemap.name;
-            currentGroundTag = tilemap.tag;
-        }
-    }
-
-    public void PlayFootStepsSound()
-    {
-        switch (currentGround)
-        {
-            case "Bridge":
-                woodFootSoundEffect.Play();
-                break;
-            case "Terrain":
-                if (currentGroundTag == "PrisonFloor")
-                {
-                    woodFootSoundEffect.Play();
-                }
-                else
-                {
-                    grassFootSoundEffect.Play();
-                }
-                break;
-            default: break;
-        }
     }
 
     private void UpdateNoiseState()
@@ -71,4 +40,34 @@ public class PlayerSound : MonoBehaviour
         };
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        groundTag = collision.gameObject.tag;
+    }
+
+    public void PlayFootSound()
+    {
+        Debug.Log(groundTag);
+        switch (groundTag)
+        {
+            case "PrisonFloor":
+                PlaySound(stoneFootSoundEffect);
+                break;
+            case "GrassFloor":
+                PlaySound(grassFootSoundEffect);
+                break;
+            case "BridgeFloor":
+                PlaySound(woodFootSoundEffect);
+                break;
+        }
+    }
+
+    private void PlaySound(AudioSource audioSource)
+    {
+        if (!isPlayng)
+        {
+            audioSource.Play();
+            isPlayng = false;
+        }
+    }
 }

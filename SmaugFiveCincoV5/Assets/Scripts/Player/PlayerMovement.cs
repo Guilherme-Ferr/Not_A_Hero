@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
                 player.facingSide = PlayerData.FacingSide.right;
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
                 {
-                    if (Input.GetKey(KeyCode.LeftShift))
+                    if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
                     {
                         player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
                     }
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
                 player.facingSide = PlayerData.FacingSide.left;
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
                 {
-                    if (Input.GetKey(KeyCode.LeftShift))
+                    if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
                     {
                         player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
                     }

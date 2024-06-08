@@ -20,20 +20,20 @@ public class GuardVision : MonoBehaviour
         //     new Vector2((float)(guard.position.x + 4), positionY);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // guardData.canSeePlayer = true;
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         // guardData.canSeePlayer = true;
+    //     }
+    // }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            // guardData.canSeePlayer = false;
-        }
-    }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         // guardData.canSeePlayer = false;
+    //     }
+    // }
 
 }

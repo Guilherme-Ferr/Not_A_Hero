@@ -10,6 +10,8 @@ TagManager:
   - Spike
   - ClimbBridge
   - Guard
+  - GrassFloor
+  - BridgeFloor
   layers:
   - Default
   - TransparentFX

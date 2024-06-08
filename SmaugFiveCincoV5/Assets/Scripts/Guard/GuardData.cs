@@ -11,16 +11,14 @@ public class GuardData : MonoBehaviour
         running,
         jumping,
         falling,
-        landing,
         attacking,
         sleeping
     }
     public FacingSide facingSide = FacingSide.right;
-    public GuardMovementState state = GuardMovementState.running;
+    public GuardMovementState state = GuardMovementState.idle;
     public bool canHearPlayer = false;
     public bool canSeePlayer = false;
     public bool aggro = false;
-    public bool dead = false;
     public bool isSleepyGuard;
 
     private void Update()

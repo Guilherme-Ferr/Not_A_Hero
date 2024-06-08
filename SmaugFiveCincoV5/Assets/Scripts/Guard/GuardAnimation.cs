@@ -28,9 +28,6 @@ public class GuardAnimation : MonoBehaviour
 
     private void FlipSpriteSide()
     {
-        if (guard.aggro)
-        {
-            sprite.flipX = guard.facingSide == GuardData.FacingSide.left;
-        }
+        sprite.flipX = guard.facingSide == GuardData.FacingSide.left;
     }
 }

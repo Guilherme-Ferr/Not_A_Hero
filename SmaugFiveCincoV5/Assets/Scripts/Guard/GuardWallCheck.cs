@@ -5,14 +5,15 @@ using UnityEngine;
 public class GuardWallCheck : MonoBehaviour
 {
     private bool isJumping = false;
-    public GuardMovement guardMovement;
+    public float jumpForce = 5.0f;
+    public Rigidbody2D rb;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("PrisonFloor") && !isJumping)
         {
             isJumping = true;
-            guardMovement.JumpGuard();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 

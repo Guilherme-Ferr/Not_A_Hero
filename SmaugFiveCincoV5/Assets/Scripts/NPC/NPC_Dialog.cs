@@ -59,9 +59,7 @@ public class NPC_Dialog : MonoBehaviour
 
         if (hit != null)
         {
-            Debug.Log("player na area");
             playerHit = true;
-            
         }
         else
         {
