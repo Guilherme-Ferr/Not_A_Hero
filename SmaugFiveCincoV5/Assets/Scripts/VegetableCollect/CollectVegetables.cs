@@ -19,7 +19,7 @@ public class CollectVegetables : MonoBehaviour
         {
             if (totalItemsDelivered < totalItemsNeeded)
             {
-                textMesh.text = "Colete suas plantações " + totalItemsDelivered + "/" + totalItemsNeeded;
+                textMesh.text = "Colete e guarde em seu baú suas plantações " + totalItemsDelivered + "/" + totalItemsNeeded;
             }
         }
     }
@@ -43,7 +43,6 @@ public class CollectVegetables : MonoBehaviour
                     // Debug.Log("tem uma " + itemType + " no borso");
 
                     VerifyTotalItemsCollected();
-
                 }
             }
 
@@ -127,4 +126,3 @@ public class CollectVegetables : MonoBehaviour
         }
     }
 }
-

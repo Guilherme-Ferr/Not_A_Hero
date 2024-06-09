@@ -8,6 +8,7 @@ public class LadderMovement : MonoBehaviour
     private float climbSpeed = 2f;
     private bool isTouchingLadder;
     private bool isClimbing;
+    private Animator animator; // Referência ao Animator
     private Rigidbody2D rb;
 
     [SerializeField] public PlayerData player;
@@ -15,16 +16,25 @@ public class LadderMovement : MonoBehaviour
     void Start()
     {
         rb = player.GetComponent<Rigidbody2D>();
+        animator = player.GetComponent<Animator>();
     }
 
     private void Update()
     {
         vertical = Input.GetAxisRaw("Vertical");
-
         if (isTouchingLadder && Mathf.Abs(vertical) > 0f)
         {
             isClimbing = true;
+            animator.speed = 1;
             player.state = PlayerData.PlayerMovementState.climbing;
+        }
+        else if (isTouchingLadder)
+        {
+            animator.speed = 0;
+        }
+        else
+        {
+            animator.speed = 1;
         }
     }
 
