@@ -47,7 +47,6 @@ public class PlayerSound : MonoBehaviour
 
     public void PlayFootSound()
     {
-        Debug.Log(groundTag);
         switch (groundTag)
         {
             case "PrisonFloor":

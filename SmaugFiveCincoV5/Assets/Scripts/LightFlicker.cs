@@ -27,10 +27,6 @@ public class LightFlicker : MonoBehaviour
     {
         // Obtém a referência à luz 2D anexada ao objeto
         light2D = GetComponent<Light2D>();
-        if (light2D == null)
-        {
-            Debug.LogError("Light2D component not found on the GameObject.");
-        }
     }
 
     private void Update()

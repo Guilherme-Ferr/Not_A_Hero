@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else
                     {
-                        if (Input.GetKey(KeyCode.LeftControl))
+                        if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                         {
                             player.state = PlayerData.PlayerMovementState.crouching;
                         }
@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                     else
                     {
-                        if (Input.GetKey(KeyCode.LeftControl))
+                        if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                         {
                             player.state = PlayerData.PlayerMovementState.crouching;
                         }
@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
                 {
-                    if (Input.GetKey(KeyCode.LeftControl))
+                    if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                     {
                         player.state = PlayerData.PlayerMovementState.crouching;
                     }
