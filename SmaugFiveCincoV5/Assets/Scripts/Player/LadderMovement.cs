@@ -22,6 +22,12 @@ public class LadderMovement : MonoBehaviour
     private void Update()
     {
         vertical = Input.GetAxisRaw("Vertical");
+        // if (isTouchingLadder && Mathf.Abs(vertical) > 0f && Input.GetKeyDown(KeyCode.DownArrow))
+        // {
+        //     isClimbing = true;
+        //     animator.speed = 1;
+        //     player.state = PlayerData.PlayerMovementState.dropingClimb;
+        // } else 
         if (isTouchingLadder && Mathf.Abs(vertical) > 0f)
         {
             isClimbing = true;

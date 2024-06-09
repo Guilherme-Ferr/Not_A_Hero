@@ -59,12 +59,12 @@ public class NPC_Dialog : MonoBehaviour
 
         if (hit != null)
         {
+            Debug.Log("é dento");
             playerHit = true;
         }
         else
         {
             playerHit = false;
-
         }
 
     }

@@ -5,19 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
-    // public GameObject gameOverSpiderUI;
-    // public GameObject gameOverSpikeUI;
-    // public GameObject gameOverGuardUI;
-    // public GameObject gameOverPoisonUI;
-    // public GameObject gameOverBirdUI;
-
-    // public GameObject gameOverUIPrefab; // Prefab da UI de Game Over
+    public FadeManager fadeManager; // Referência ao FadeManager
     public List<GameObject> gameOverUIs; // Lista de UIs de Game Over, uma para cada tipo de morte
-
+    public GameOverAnimationManager gameOverAnimationManager; // Referência ao GameOverAnimationManager
     private Dictionary<string, GameObject> gameOverUIDictionary;
 
     private void Start()
     {
+        gameOverAnimationManager.gameOverManager = this;
+
         // Inicializa o dicionário
         gameOverUIDictionary = new Dictionary<string, GameObject>();
 
@@ -33,29 +29,25 @@ public class GameOverManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameOverUIDictionary.TryGetValue(collision.gameObject.tag, out GameObject gameOverUI))
+        if (collision.gameObject.CompareTag("Bird"))
+        {
+            gameOverAnimationManager.PlayGameOverAnimation();
+        }
+        else if (gameOverUIDictionary.TryGetValue(collision.gameObject.tag, out GameObject gameOverUI))
         {
             GameOver(gameOverUI);
         }
     }
 
-    // private void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Spike"))
-    //     {
-    //         GameOver(gameOverSpikeUI);
-    //     }
-    // }
-
-    void GameOver(GameObject gameOverUItoPlaye)
+    public void GameOver(GameObject gameOverUItoPlay)
     {
-        gameOverUItoPlaye.SetActive(true);
+        gameOverUItoPlay.SetActive(true);
         Time.timeScale = 0f; // Pausa o jogo
     }
 
     public void RestartLevel()
     {
         Time.timeScale = 1f; // Despausa o jogo
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Recarrega a cena atual
+        fadeManager.RestartLevel(); // Chama o método de reiniciar com fade
     }
 }

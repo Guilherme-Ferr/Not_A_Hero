@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ccb8a19864a6443a91848554aacd5c, type: 3}
+  m_Name: Melancio Bridge
+  m_EditorClassIdentifier: 
+  actor: {fileID: 3069920079245875116, guid: cf3cd1de529186448af83b1d3d35de61, type: 3}
+  speakerSprite: {fileID: 0}
+  sentence: 
+  dialogues:
+  - actorName: Melancio
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: 'Melancio: asdfgg'
+      english: 
+  - actorName: Melancio
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: 'Melancio: zxcvbn'
+      english: 
