@@ -12,6 +12,9 @@ TagManager:
   - Guard
   - GrassFloor
   - BridgeFloor
+  - Spider
+  - Poison
+  - Bird
   layers:
   - Default
   - TransparentFX
