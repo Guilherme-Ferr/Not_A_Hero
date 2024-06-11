@@ -49,6 +49,6 @@ public class GameOverManager : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f; // Despausa o jogo
-        // fadeManager.RestartLevel(); // Chama o método de reiniciar com fade
+        fadeManager.RestartLevel(); // Chama o método de reiniciar com fade
     }
 }
