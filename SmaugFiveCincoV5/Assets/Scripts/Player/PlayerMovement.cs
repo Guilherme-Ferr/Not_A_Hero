@@ -61,7 +61,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (dirX > 0f)
             {
-                player.facingSide = PlayerData.FacingSide.right;
+                if (player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+                {
+                    player.facingSide = PlayerData.FacingSide.right;
+                }
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
                 {
                     if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
@@ -94,7 +97,10 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (dirX < 0f)
             {
-                player.facingSide = PlayerData.FacingSide.left;
+                if (player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+                {
+                    player.facingSide = PlayerData.FacingSide.left;
+                }
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
                 {
                     if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)

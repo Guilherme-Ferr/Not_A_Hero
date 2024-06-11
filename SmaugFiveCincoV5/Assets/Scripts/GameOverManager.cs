@@ -12,7 +12,7 @@ public class GameOverManager : MonoBehaviour
 
     private void Start()
     {
-        gameOverAnimationManager.gameOverManager = this;
+        // gameOverAnimationManager.gameOverManager = this;
 
         // Inicializa o dicionário
         gameOverUIDictionary = new Dictionary<string, GameObject>();
@@ -29,11 +29,12 @@ public class GameOverManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bird"))
-        {
-            gameOverAnimationManager.PlayGameOverAnimation();
-        }
-        else if (gameOverUIDictionary.TryGetValue(collision.gameObject.tag, out GameObject gameOverUI))
+        // if (collision.gameObject.CompareTag("Bird"))
+        // {
+        //     gameOverAnimationManager.PlayGameOverAnimation();
+        // }
+        // else 
+        if (gameOverUIDictionary.TryGetValue(collision.gameObject.tag, out GameObject gameOverUI))
         {
             GameOver(gameOverUI);
         }
@@ -48,6 +49,6 @@ public class GameOverManager : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f; // Despausa o jogo
-        fadeManager.RestartLevel(); // Chama o método de reiniciar com fade
+        // fadeManager.RestartLevel(); // Chama o método de reiniciar com fade
     }
 }

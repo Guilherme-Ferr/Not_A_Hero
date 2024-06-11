@@ -7,6 +7,7 @@ using TMPro;
 public class CollectVegetables : MonoBehaviour
 {
     public TextMeshProUGUI textMesh;
+    public TextMeshProUGUI tutorialTextMesh;
 
     public int totalItemsNeeded = 5;
     public int totalItemsDelivered = 0;
@@ -19,7 +20,7 @@ public class CollectVegetables : MonoBehaviour
         {
             if (totalItemsDelivered < totalItemsNeeded)
             {
-                textMesh.text = "Colete e guarde em seu baú suas plantações " + totalItemsDelivered + "/" + totalItemsNeeded;
+                textMesh.text = "Colete e guarde em seu baú suas plantações " + totalItemsDelivered + "/" + totalItemsNeeded + ".";
             }
         }
     }
@@ -121,7 +122,8 @@ public class CollectVegetables : MonoBehaviour
         totalItemsDelivered++;
         if (totalItemsNeeded == totalItemsDelivered)
         {
-            textMesh.text = "Volte para sua casa";
+            textMesh.text = "Estenda suas roupas.";
+            tutorialTextMesh.text = null;
             finishedCollecting = true;
         }
     }
