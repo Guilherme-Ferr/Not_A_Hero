@@ -40,6 +40,14 @@ public class FadeManager : MonoBehaviour
 
     private IEnumerator FadeOutAndRestart()
     {
+        yield return StartCoroutine(FadeOut());
+
+        // Reinicia a cena
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public IEnumerator FadeOut()
+    {
         float elapsedTime = 0f;
         Color color = fadeImage.color;
 
@@ -53,8 +61,5 @@ public class FadeManager : MonoBehaviour
 
         color.a = 1f;
         fadeImage.color = color;
-
-        // Reinicia a cena
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

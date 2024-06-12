@@ -4252,6 +4252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectVegetable: {fileID: 614103192}
+  fadeManager: {fileID: 1305611025}
 --- !u!1 &506714940
 GameObject:
   m_ObjectHideFlags: 0
@@ -4512,7 +4513,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.69, y: -0.52, z: -10}
+  m_LocalPosition: {x: -7.52, y: -0.42, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4698,19 +4699,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2074285601684664004, guid: a83379c6b6e18534da12ab57e6ffbebe, type: 3}
       propertyPath: m_Color.a
-      value: 0.5019608
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2074285601684664004, guid: a83379c6b6e18534da12ab57e6ffbebe, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2074285601684664004, guid: a83379c6b6e18534da12ab57e6ffbebe, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2074285601684664004, guid: a83379c6b6e18534da12ab57e6ffbebe, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3049063697579863411, guid: a83379c6b6e18534da12ab57e6ffbebe, type: 3}
       propertyPath: m_Name
@@ -16242,7 +16243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 641736760}
-  fadeDuration: 1.5
+  fadeDuration: 1
 --- !u!1001 &1330764699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19292,11 +19293,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3414438521073975916, guid: e2bc6f6a4f91ff14791de2f17a9264d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.69
+      value: -7.52
       objectReference: {fileID: 0}
     - target: {fileID: 3414438521073975916, guid: e2bc6f6a4f91ff14791de2f17a9264d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 3414438521073975916, guid: e2bc6f6a4f91ff14791de2f17a9264d8, type: 3}
       propertyPath: m_LocalPosition.z
