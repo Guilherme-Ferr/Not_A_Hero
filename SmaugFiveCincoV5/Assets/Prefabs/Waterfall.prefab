@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6696543219224759142}
   - component: {fileID: 4717399828679697755}
   - component: {fileID: 5800793312488867269}
-  - component: {fileID: 4303343801720588754}
-  - component: {fileID: 3277502229642769511}
+  - component: {fileID: 2071478870597023433}
+  - component: {fileID: 7499442843282474758}
+  - component: {fileID: 6454758608004453060}
   m_Layer: 0
   m_Name: Waterfall
   m_TagString: Untagged
@@ -108,7 +109,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &4303343801720588754
+--- !u!82 &2071478870597023433
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,7 +165,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -204,7 +205,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3277502229642769511
+--- !u!58 &7499442843282474758
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051139316721554368}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.14524588, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5685755
+--- !u!114 &6454758608004453060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,9 +249,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1051139316721554368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 719dc209710140a4d8d7fc2f039d17ec, type: 3}
+  m_Script: {fileID: 11500000, guid: ba32871e5d3fb4c4f9dee48203dc10d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 4303343801720588754}
-  player: {fileID: 0}
-  maxDistance: 10
+  waterfallAudio: {fileID: 2071478870597023433}
+  maxDistance: 5
