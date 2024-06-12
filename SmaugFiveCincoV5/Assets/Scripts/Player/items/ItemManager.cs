@@ -22,6 +22,7 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] public PlayerData player;
     [SerializeField] public GameObject storage;
+    [SerializeField] public PlayerSound playerSound;
 
     Dictionary<KeyCode, int> keyToItemPosition = new Dictionary<KeyCode, int>
     {
@@ -73,6 +74,7 @@ public class ItemManager : MonoBehaviour
             slot1.sprite = spriteRenderer.sprite;
             slot1.color = spriteRenderer.color;
             gameObject.SetActive(false);
+            playerSound.PlayCollectVegetation();
         }
         else if (carriedItem2 == null)
         {
@@ -80,6 +82,7 @@ public class ItemManager : MonoBehaviour
             slot2.sprite = spriteRenderer.sprite;
             slot2.color = spriteRenderer.color;
             gameObject.SetActive(false);
+            playerSound.PlayCollectVegetation();
         }
         else if (carriedItem3 == null)
         {
@@ -87,6 +90,7 @@ public class ItemManager : MonoBehaviour
             slot3.sprite = spriteRenderer.sprite;
             slot3.color = spriteRenderer.color;
             gameObject.SetActive(false);
+            playerSound.PlayCollectVegetation();
         }
         else if (carriedItem4 == null)
         {
@@ -94,6 +98,7 @@ public class ItemManager : MonoBehaviour
             slot4.sprite = spriteRenderer.sprite;
             slot4.color = spriteRenderer.color;
             gameObject.SetActive(false);
+            playerSound.PlayCollectVegetation();
         }
         else if (carriedItem5 == null)
         {
@@ -101,6 +106,7 @@ public class ItemManager : MonoBehaviour
             slot5.sprite = spriteRenderer.sprite;
             slot5.color = spriteRenderer.color;
             gameObject.SetActive(false);
+            playerSound.PlayCollectVegetation();
         }
         isCollecting = false;
 
