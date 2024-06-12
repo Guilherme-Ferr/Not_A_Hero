@@ -12,6 +12,7 @@ public class PlayerSound : MonoBehaviour
     public AudioSource chainSoundEffect;
     public AudioSource collectVegetationSoundEffect;
     public AudioSource slingShootSoundEffect;
+    public AudioSource wallBreakSoundEffect;
     private PlayerData playerData;
     public enum PlayerNoise { none, mid, loud }
     public PlayerNoise playerNoise;
@@ -86,5 +87,10 @@ public class PlayerSound : MonoBehaviour
     public void PlaySlingShoot()
     {
         slingShootSoundEffect.Play();
+    }
+
+    public void PlayWallDestroyed()
+    {
+        wallBreakSoundEffect.Play();
     }
 }

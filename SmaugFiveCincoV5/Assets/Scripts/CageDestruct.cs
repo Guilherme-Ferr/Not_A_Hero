@@ -5,13 +5,14 @@ using UnityEngine;
 public class CageDestruct : MonoBehaviour
 {
     public PlayerData player;
+    [SerializeField] public PlayerSound playerSound;
 
-    // Update is called once per frame
-    void Update()
+    public void DestroyWall()
     {
         if (player.state == PlayerData.PlayerMovementState.shootingSlingshot && player.facingSide == PlayerData.FacingSide.right)
         {
             Destroy(transform.gameObject);
+            playerSound.PlayWallDestroyed();
         }
     }
 }

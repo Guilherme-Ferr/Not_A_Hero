@@ -7,6 +7,7 @@ public class PlayerShootSlingshot : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] public PlayerData player;
     [SerializeField] public PlayerSound playerSound;
+    [SerializeField] public CageDestruct cageWall;
 
     private void Start()
     {
@@ -32,5 +33,10 @@ public class PlayerShootSlingshot : MonoBehaviour
             player.state = PlayerData.PlayerMovementState.shootingSlingshot;
             playerSound.PlaySlingShoot();
         }
+    }
+
+    public void BreakWall()
+    {
+        cageWall.DestroyWall();
     }
 }
