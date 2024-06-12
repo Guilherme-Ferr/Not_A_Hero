@@ -9,6 +9,7 @@ public class PlayerSound : MonoBehaviour
     public AudioSource grassFootSoundEffect;
     public AudioSource woodFootSoundEffect;
     public AudioSource stoneFootSoundEffect;
+    public AudioSource chainSoundEffect;
     private PlayerData playerData;
     public enum PlayerNoise { none, mid, loud }
     public PlayerNoise playerNoise;
@@ -68,5 +69,10 @@ public class PlayerSound : MonoBehaviour
             audioSource.Play();
             isPlayng = false;
         }
+    }
+
+    public void PlayChainSound()
+    {
+        chainSoundEffect.Play();
     }
 }
