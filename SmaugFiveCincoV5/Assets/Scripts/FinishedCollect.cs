@@ -12,17 +12,20 @@ public class FinishedCollect : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player") && collectVegetable.finishedCollecting)
         {
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
             // Inicia o fade out antes de carregar a próxima fase
-            StartCoroutine(LoadNextSceneAfterFade());
+            // StartCoroutine(LoadNextSceneAfterFade());
         }
     }
 
-    private IEnumerator LoadNextSceneAfterFade()
-    {
-        // Inicia o fade out
-        yield return StartCoroutine(fadeManager.FadeOut());
+    // private IEnumerator LoadNextSceneAfterFade()
+    // {
+    //     // Inicia o fade out
+    //     yield return StartCoroutine(fadeManager.FadeOut());
 
-        // Carrega a próxima cena após o fade out
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    //     // Carrega a próxima cena após o fade out
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    // }
 }

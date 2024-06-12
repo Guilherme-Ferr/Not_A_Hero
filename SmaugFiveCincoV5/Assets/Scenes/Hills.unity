@@ -4188,7 +4188,7 @@ Transform:
   m_GameObject: {fileID: 504970530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.68, y: 1.2594, z: 0}
+  m_LocalPosition: {x: -5.88, y: 1.2594, z: 0}
   m_LocalScale: {x: 0.4429671, y: 6.4141026, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16243,7 +16243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 641736760}
-  fadeDuration: 1
+  fadeDuration: 0
 --- !u!82 &1305611026
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18540,7 +18540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1980662057
 MonoBehaviour:
   m_ObjectHideFlags: 0

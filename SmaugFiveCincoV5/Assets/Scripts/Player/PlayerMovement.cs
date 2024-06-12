@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.state != PlayerData.PlayerMovementState.dropingBridge && player.state != PlayerData.PlayerMovementState.climbingBridge && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.collectedSlingshot && player.state != PlayerData.PlayerMovementState.dropingBridge && player.state != PlayerData.PlayerMovementState.climbingBridge && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
