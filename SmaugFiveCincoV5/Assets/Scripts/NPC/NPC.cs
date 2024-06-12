@@ -20,7 +20,7 @@ public class NPC : MonoBehaviour
         initialSpeed = speed;
         anim = GetComponent<Animator>();
     }
-    // Update is called once per frame
+
     void Update()
     {
         Vector2 direction = paths[index].position - transform.position;
