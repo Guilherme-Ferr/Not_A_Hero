@@ -11,6 +11,7 @@ public class PlayerSound : MonoBehaviour
     public AudioSource stoneFootSoundEffect;
     public AudioSource chainSoundEffect;
     public AudioSource collectVegetationSoundEffect;
+    public AudioSource slingShootSoundEffect;
     private PlayerData playerData;
     public enum PlayerNoise { none, mid, loud }
     public PlayerNoise playerNoise;
@@ -80,5 +81,10 @@ public class PlayerSound : MonoBehaviour
     public void PlayCollectVegetation()
     {
         collectVegetationSoundEffect.Play();
+    }
+
+    public void PlaySlingShoot()
+    {
+        slingShootSoundEffect.Play();
     }
 }

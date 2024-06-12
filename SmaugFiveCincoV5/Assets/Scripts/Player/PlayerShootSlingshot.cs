@@ -6,6 +6,7 @@ public class PlayerShootSlingshot : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] public PlayerData player;
+    [SerializeField] public PlayerSound playerSound;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class PlayerShootSlingshot : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Static;
             player.state = PlayerData.PlayerMovementState.shootingSlingshot;
+            playerSound.PlaySlingShoot();
         }
     }
 }
