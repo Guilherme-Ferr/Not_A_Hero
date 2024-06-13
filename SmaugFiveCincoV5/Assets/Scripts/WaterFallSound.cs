@@ -17,7 +17,7 @@ public class WaterFallSound : MonoBehaviour
     void Update()
     {
         float distance = Vector2.Distance(playerTransform.position, transform.position);
-        float volume = 1f - Mathf.Clamp01(distance / maxDistance);
+        float volume = 0.7f - Mathf.Clamp01(distance / maxDistance);
 
         if (distance <= maxDistance)
         {

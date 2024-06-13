@@ -121,7 +121,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e47b709f19bc15247828a352ce1dc962, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -254,3 +254,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterfallAudio: {fileID: 2071478870597023433}
   maxDistance: 5
+  fadeSpeed: 1
