@@ -19,31 +19,31 @@ MonoBehaviour:
   - actorName: E. Caramello
     profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
     sentence:
-      portuguese: "Nossa, voc\xEA ta com uma cara p\xE9ssima"
+      portuguese: "E. Caramello: Nossa, voc\xEA ta com uma cara p\xE9ssima"
       english: S
   - actorName: E. Caramello
     profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
     sentence:
-      portuguese: "Como foi parar a\xED? Ah, n\xE3o importa, muita coisa vem acontecendo
-        ultimamente..."
+      portuguese: "E. Caramello: Como foi parar a\xED? Ah, n\xE3o importa, muita
+        coisa vem acontecendo ultimamente..."
       english: S
   - actorName: E. Caramello
     profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
     sentence:
-      portuguese: "Bom, mas se quiser sair da\xED, por que n\xE3o tenta pegar esse
-        estilingue ai na sua cela e atirar em dire\xE7\xE3o a parede?"
+      portuguese: "E. Caramello: Bom, mas se quiser sair da\xED, por que n\xE3o tenta
+        pegar esse estilingue ai na sua cela e atirar em dire\xE7\xE3o a parede?"
       english: S
   - actorName: E. Caramello
     profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
     sentence:
-      portuguese: "N\xE3o, eu n\xE3o acho que voc\xEA seja super forte a ponto de
-        quebrar a parede, acontece que teve alguns tremores recentes e algumas estruturas
-        est\xE3o fragilizadas."
+      portuguese: "E. Caramello: N\xE3o, eu n\xE3o acho que voc\xEA seja super forte
+        a ponto de quebrar a parede, acontece que teve alguns tremores recentes e
+        algumas estruturas est\xE3o fragilizadas."
       english: S
   - actorName: E. Caramello
     profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
     sentence:
-      portuguese: "E a cela ao lado est\xE1 com o port\xE3o quebrado, eu poderia
-        continuar dizendo como voc\xEA pode escapar daqui, mas eu odeio tutoriais.
-        Boa sorte."
+      portuguese: "E. Caramello: E a cela ao lado est\xE1 com o port\xE3o quebrado,
+        eu poderia continuar dizendo como voc\xEA pode escapar daqui, mas eu odeio
+        tutoriais. Boa sorte."
       english: S
