@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float dirX = 0f;
     private float runningSpeed = 4f;
     private float walkingSpeed = 3f;
-    private float crouchingSpeed = 1.5f;
+    private float crouchingSpeed = 2f;
     private float jumpForce = 10f;
     public CapsuleCollider2D groundCheck;
     public LayerMask groundLayer;
