@@ -7,6 +7,7 @@ public class NPC_Dialog : MonoBehaviour
     public LayerMask playerLayer;
 
     public DialogueSettings dialogue;
+    public Sprite profileImage;
 
     bool playerHit;
 
@@ -21,7 +22,7 @@ public class NPC_Dialog : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && playerHit)
         {
-            DialogueControl.instance.Speech(sentences.ToArray());
+            DialogueControl.instance.Speech(sentences.ToArray(),profileImage);
         }
     }
 

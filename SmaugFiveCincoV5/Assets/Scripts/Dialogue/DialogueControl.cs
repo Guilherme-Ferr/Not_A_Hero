@@ -67,12 +67,13 @@ public class DialogueControl : MonoBehaviour
     }
 
     // Chamar a fala do NPC
-    public void Speech(string[] txt)
+    public void Speech(string[] txt, Sprite profile)
     {
         if (!isShowing)
         {
             dialogueObj.SetActive(true);
             sentences = txt;
+            profileSprite.sprite = profile;
             index = 0; // Iniciar do início quando um novo diálogo é iniciado
             StartCoroutine(TypeSentence());
             isShowing = true;
