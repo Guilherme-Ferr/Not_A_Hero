@@ -5,17 +5,19 @@ using UnityEngine;
 public class WaterFallSound : MonoBehaviour
 {
     public AudioSource waterfallAudio;
-    public float maxDistance = 5f; // Máxima distância para ouvir o som
+    public float maxDistance = 15f;
     private Transform playerTransform;
+    public float fadeSpeed = 1f;
 
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Assumindo que o player tem a tag "Player"
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
         float distance = Vector2.Distance(playerTransform.position, transform.position);
+        float volume = 1f - Mathf.Clamp01(distance / maxDistance);
 
         if (distance <= maxDistance)
         {
@@ -23,10 +25,12 @@ public class WaterFallSound : MonoBehaviour
             {
                 waterfallAudio.Play();
             }
+            waterfallAudio.volume = Mathf.MoveTowards(waterfallAudio.volume, volume, fadeSpeed * Time.deltaTime);
         }
         else
         {
-            if (waterfallAudio.isPlaying)
+            waterfallAudio.volume = Mathf.MoveTowards(waterfallAudio.volume, 0f, fadeSpeed * Time.deltaTime);
+            if (waterfallAudio.volume == 0f && waterfallAudio.isPlaying)
             {
                 waterfallAudio.Pause();
             }
