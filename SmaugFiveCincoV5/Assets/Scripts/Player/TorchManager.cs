@@ -8,6 +8,7 @@ public class TorchManager : MonoBehaviour
     public Light2D torchLight;
     public Light2D playerLight;
     public PlayerData player;
+    public AudioSource torchOffSoundEffect;
 
     void Start()
     {
@@ -19,6 +20,11 @@ public class TorchManager : MonoBehaviour
 
     void Update()
     {
+        TurnTorch();
+    }
+
+    private void TurnTorch()
+    {
         if (player.collectedTorch)
         {
             torchLight.enabled = player.withTorch;
@@ -27,6 +33,10 @@ public class TorchManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && player.collectedTorch)
         {
             player.withTorch = !player.withTorch;
+            if (!player.withTorch)
+            {
+                torchOffSoundEffect.Play();
+            }
         }
 
         if (torchLight.enabled)

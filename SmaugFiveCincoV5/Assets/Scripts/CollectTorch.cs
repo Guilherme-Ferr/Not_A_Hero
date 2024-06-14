@@ -11,6 +11,7 @@ public class CollectTorch : MonoBehaviour
             PlayerData player = collider.gameObject.GetComponent<PlayerData>();
             Rigidbody2D rb = collider.gameObject.GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Static;
+            player.collectedTorch = true;
             player.withTorch = true;
             player.state = PlayerData.PlayerMovementState.idleTorch;
             rb.bodyType = RigidbodyType2D.Dynamic;
