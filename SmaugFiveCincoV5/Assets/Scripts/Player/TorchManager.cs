@@ -9,6 +9,8 @@ public class TorchManager : MonoBehaviour
     public Light2D playerLight;
     public PlayerData player;
     public AudioSource torchOffSoundEffect;
+    public AudioSource torchOnSoundEffect;
+    public AudioSource torchContinuousSoundEffect;
 
     void Start()
     {
@@ -36,6 +38,13 @@ public class TorchManager : MonoBehaviour
             if (!player.withTorch)
             {
                 torchOffSoundEffect.Play();
+                torchContinuousSoundEffect.Stop();
+                torchOnSoundEffect.Stop();
+            }
+            else
+            {
+                torchOnSoundEffect.Play();
+                StartCoroutine(PlayContinuousSoundAfter(torchOnSoundEffect.clip.length));
             }
         }
 
@@ -46,6 +55,15 @@ public class TorchManager : MonoBehaviour
         else
         {
             playerLight.enabled = true;
+        }
+    }
+
+    private IEnumerator PlayContinuousSoundAfter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (player.withTorch) // Verificar se a tocha ainda está ligada
+        {
+            torchContinuousSoundEffect.Play();
         }
     }
 }
