@@ -38,8 +38,15 @@ public class PlayerSound : MonoBehaviour
             PlayerData.PlayerMovementState.fallingSlingshot or
             PlayerData.PlayerMovementState.landingSlingshot or
             PlayerData.PlayerMovementState.shootingSlingshot or
-            PlayerData.PlayerMovementState.climbing => PlayerNoise.mid,
-            PlayerData.PlayerMovementState.runningSlingshot => PlayerNoise.loud,
+            PlayerData.PlayerMovementState.walkingTorch or
+            PlayerData.PlayerMovementState.jumpingTorch or
+            PlayerData.PlayerMovementState.fallingTorch or
+            PlayerData.PlayerMovementState.landingTorch or
+            PlayerData.PlayerMovementState.shootingSlingshotTorch or
+            PlayerData.PlayerMovementState.climbing or
+            PlayerData.PlayerMovementState.climbingTorch => PlayerNoise.mid,
+            PlayerData.PlayerMovementState.runningSlingshot or
+            PlayerData.PlayerMovementState.shootingSlingshotTorch => PlayerNoise.loud,
             _ => PlayerNoise.none,
         };
     }

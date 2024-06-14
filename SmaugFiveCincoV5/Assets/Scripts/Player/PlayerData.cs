@@ -23,11 +23,22 @@ public class PlayerData : MonoBehaviour
         fallingSlingshot,
         shootingSlingshot,
         climbingBridge,
-        dropingBridge
+        dropingBridge,
+        idleTorch,
+        walkingTorch,
+        runningTorch,
+        crouchingTorch,
+        jumpingTorch,
+        fallingTorch,
+        climbingTorch,
+        landingTorch,
+        shootingSlingshotTorch,
     }
     public FacingSide facingSide = FacingSide.right;
     public PlayerMovementState state = PlayerMovementState.idle;
     public int itemSelectedPosition = 0;
     public bool collectedSlingshot = false;
+    public bool collectedTorch = false;
+    public bool withTorch = false;
     public bool dead = false;
 }

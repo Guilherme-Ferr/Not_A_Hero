@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private PlayerMovement playerd;
     public bool isPaused;
     private float dirX = 0f;
     private float runningSpeed = 4f;
@@ -35,7 +34,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.collectedSlingshot && player.state != PlayerData.PlayerMovementState.dropingBridge && player.state != PlayerData.PlayerMovementState.climbingBridge && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.collectedSlingshot &&
+        player.state != PlayerData.PlayerMovementState.dropingBridge &&
+        player.state != PlayerData.PlayerMovementState.climbingBridge &&
+        player.state != PlayerData.PlayerMovementState.climbing &&
+        player.state != PlayerData.PlayerMovementState.climbingTorch &&
+        player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
+        player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch
+        )
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -44,9 +50,11 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         bool isGrounded = Physics2D.OverlapCapsule(groundCheck.transform.position, groundCheck.size, groundCheck.direction, 0, groundLayer);
-        if (isGrounded && (player.state == PlayerData.PlayerMovementState.falling || player.state == PlayerData.PlayerMovementState.fallingSlingshot))
+        if (isGrounded && (player.state == PlayerData.PlayerMovementState.falling ||
+        player.state == PlayerData.PlayerMovementState.fallingSlingshot ||
+        player.state == PlayerData.PlayerMovementState.fallingTorch))
         {
-            player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.landingSlingshot : PlayerData.PlayerMovementState.landing;
+            player.state = player.withTorch ? PlayerData.PlayerMovementState.landingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.landingSlingshot : PlayerData.PlayerMovementState.landing;
         }
         return isGrounded;
     }
@@ -61,83 +69,101 @@ public class PlayerMovement : MonoBehaviour
         {
             if (dirX > 0f)
             {
-                if (player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+                if (player.state != PlayerData.PlayerMovementState.shootingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
                 {
                     player.facingSide = PlayerData.FacingSide.right;
                 }
-                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
+                player.state != PlayerData.PlayerMovementState.climbingTorch &&
+                player.state != PlayerData.PlayerMovementState.landing &&
+                player.state != PlayerData.PlayerMovementState.landingSlingshot &&
+                player.state != PlayerData.PlayerMovementState.landingTorch &&
+                player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
+                player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
                 {
                     if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.runningTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
                     }
                     else
                     {
                         if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                         {
-                            player.state = PlayerData.PlayerMovementState.crouching;
+                            player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
                         }
                         else
                         {
-                            player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                            player.state = player.withTorch ? PlayerData.PlayerMovementState.walkingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
                         }
                     }
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
                     }
                 }
             }
             else if (dirX < 0f)
             {
-                if (player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+                if (player.state != PlayerData.PlayerMovementState.shootingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
                 {
                     player.facingSide = PlayerData.FacingSide.left;
                 }
-                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
+                player.state != PlayerData.PlayerMovementState.climbingTorch &&
+                player.state != PlayerData.PlayerMovementState.landing &&
+                player.state != PlayerData.PlayerMovementState.landingSlingshot &&
+                player.state != PlayerData.PlayerMovementState.landingTorch &&
+                player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
+                player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
                 {
                     if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.runningTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.runningSlingshot : PlayerData.PlayerMovementState.running;
                     }
                     else
                     {
                         if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                         {
-                            player.state = PlayerData.PlayerMovementState.crouching;
+                            player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
                         }
                         else
                         {
-                            player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                            player.state = player.withTorch ? PlayerData.PlayerMovementState.walkingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
                         }
                     }
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
                     }
                 }
             }
             else
             {
-                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.landing && player.state != PlayerData.PlayerMovementState.landingSlingshot && player.state != PlayerData.PlayerMovementState.shootingSlingshot)
+                if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
+                player.state != PlayerData.PlayerMovementState.climbingTorch &&
+                player.state != PlayerData.PlayerMovementState.landing &&
+                player.state != PlayerData.PlayerMovementState.landingSlingshot &&
+                player.state != PlayerData.PlayerMovementState.landingTorch &&
+                player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
+                player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
                 {
                     if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                     {
-                        player.state = PlayerData.PlayerMovementState.crouching;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
                     }
                     else
                     {
@@ -146,13 +172,13 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
                     {
-                        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
+                        player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
 
                     }
                 }
@@ -160,9 +186,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void SetIdle()
+    public void SetIdle()
     {
-        player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
+        player.state = player.withTorch ? PlayerData.PlayerMovementState.idleTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
         rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
@@ -174,14 +200,21 @@ public class PlayerMovement : MonoBehaviour
             PlayerData.PlayerMovementState.landing or
             PlayerData.PlayerMovementState.climbing or
             PlayerData.PlayerMovementState.landingSlingshot or
-            PlayerData.PlayerMovementState.walkingSlingshot => walkingSpeed,
+            PlayerData.PlayerMovementState.walkingSlingshot or
+            PlayerData.PlayerMovementState.walkingTorch or
+            PlayerData.PlayerMovementState.landingTorch or
+            PlayerData.PlayerMovementState.climbingTorch => walkingSpeed,
             PlayerData.PlayerMovementState.running or
             PlayerData.PlayerMovementState.jumping or
             PlayerData.PlayerMovementState.falling or
             PlayerData.PlayerMovementState.fallingSlingshot or
             PlayerData.PlayerMovementState.jumpingSlingshot or
-            PlayerData.PlayerMovementState.runningSlingshot => runningSpeed,
-            PlayerData.PlayerMovementState.crouching => crouchingSpeed,
+            PlayerData.PlayerMovementState.runningSlingshot or
+            PlayerData.PlayerMovementState.fallingTorch or
+            PlayerData.PlayerMovementState.jumpingTorch or
+            PlayerData.PlayerMovementState.runningTorch => runningSpeed,
+            PlayerData.PlayerMovementState.crouching or
+            PlayerData.PlayerMovementState.crouchingTorch => crouchingSpeed,
             _ => 0f,
         };
     }

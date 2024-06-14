@@ -30,7 +30,7 @@ public class PlayerShootSlingshot : MonoBehaviour
         )
         {
             rb.bodyType = RigidbodyType2D.Static;
-            player.state = PlayerData.PlayerMovementState.shootingSlingshot;
+            player.state = player.withTorch ? PlayerData.PlayerMovementState.shootingSlingshotTorch : PlayerData.PlayerMovementState.shootingSlingshot;
             playerSound.PlaySlingShoot();
         }
     }

@@ -22,17 +22,11 @@ public class LadderMovement : MonoBehaviour
     private void Update()
     {
         vertical = Input.GetAxisRaw("Vertical");
-        // if (isTouchingLadder && Mathf.Abs(vertical) > 0f && Input.GetKeyDown(KeyCode.DownArrow))
-        // {
-        //     isClimbing = true;
-        //     animator.speed = 1;
-        //     player.state = PlayerData.PlayerMovementState.dropingClimb;
-        // } else 
         if (isTouchingLadder && Mathf.Abs(vertical) > 0f)
         {
             isClimbing = true;
             animator.speed = 1;
-            player.state = PlayerData.PlayerMovementState.climbing;
+            player.state = player.withTorch ? PlayerData.PlayerMovementState.climbingTorch : PlayerData.PlayerMovementState.climbing;
         }
         else if (isTouchingLadder)
         {
@@ -71,7 +65,7 @@ public class LadderMovement : MonoBehaviour
         {
             isTouchingLadder = false;
             isClimbing = false;
-            player.state = player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
+            player.state = player.withTorch ? PlayerData.PlayerMovementState.idleTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
         }
     }
 }
