@@ -43,17 +43,22 @@ public class PlayerSound : MonoBehaviour
             PlayerData.PlayerMovementState.fallingTorch or
             PlayerData.PlayerMovementState.landingTorch or
             PlayerData.PlayerMovementState.shootingSlingshotTorch or
-            PlayerData.PlayerMovementState.climbing or
-            PlayerData.PlayerMovementState.climbingTorch => PlayerNoise.mid,
+            PlayerData.PlayerMovementState.climbing
+            // or
+            // PlayerData.PlayerMovementState.climbingTorch 
+            => PlayerNoise.mid,
             PlayerData.PlayerMovementState.runningSlingshot or
             PlayerData.PlayerMovementState.shootingSlingshotTorch => PlayerNoise.loud,
             _ => PlayerNoise.none,
         };
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D other)
     {
-        groundTag = collision.gameObject.tag;
+        if (!string.IsNullOrEmpty(other.gameObject.tag))
+        {
+            groundTag = other.gameObject.tag;
+        }
     }
 
     public void PlayFootSound()
@@ -66,7 +71,7 @@ public class PlayerSound : MonoBehaviour
             case "GrassFloor":
                 PlaySound(grassFootSoundEffect);
                 break;
-            case "BridgeFloor":
+            default:
                 PlaySound(woodFootSoundEffect);
                 break;
         }

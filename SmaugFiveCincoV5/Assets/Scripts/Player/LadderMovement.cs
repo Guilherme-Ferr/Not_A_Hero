@@ -26,7 +26,9 @@ public class LadderMovement : MonoBehaviour
         {
             isClimbing = true;
             animator.speed = 1;
-            player.state = player.withTorch ? PlayerData.PlayerMovementState.climbingTorch : PlayerData.PlayerMovementState.climbing;
+            player.state =
+            // player.withTorch ? PlayerData.PlayerMovementState.climbingTorch : 
+            PlayerData.PlayerMovementState.climbing;
         }
         else if (isTouchingLadder)
         {

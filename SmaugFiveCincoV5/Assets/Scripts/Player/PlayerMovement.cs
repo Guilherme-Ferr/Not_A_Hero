@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         player.state != PlayerData.PlayerMovementState.dropingBridge &&
         player.state != PlayerData.PlayerMovementState.climbingBridge &&
         player.state != PlayerData.PlayerMovementState.climbing &&
-        player.state != PlayerData.PlayerMovementState.climbingTorch &&
+        // player.state != PlayerData.PlayerMovementState.climbingTorch &&
         player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
         player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch
         )
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
                     player.facingSide = PlayerData.FacingSide.right;
                 }
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
-                player.state != PlayerData.PlayerMovementState.climbingTorch &&
+                // player.state != PlayerData.PlayerMovementState.climbingTorch &&
                 player.state != PlayerData.PlayerMovementState.landing &&
                 player.state != PlayerData.PlayerMovementState.landingSlingshot &&
                 player.state != PlayerData.PlayerMovementState.landingTorch &&
@@ -99,11 +99,15 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing
+                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
+                    )
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing
+                    //  && player.state != PlayerData.PlayerMovementState.climbingTorch
+                     )
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
                     }
@@ -116,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
                     player.facingSide = PlayerData.FacingSide.left;
                 }
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
-                player.state != PlayerData.PlayerMovementState.climbingTorch &&
+                // player.state != PlayerData.PlayerMovementState.climbingTorch &&
                 player.state != PlayerData.PlayerMovementState.landing &&
                 player.state != PlayerData.PlayerMovementState.landingSlingshot &&
                 player.state != PlayerData.PlayerMovementState.landingTorch &&
@@ -141,11 +145,15 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing
+                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
+                    )
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing
+                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
+                    )
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
                     }
@@ -154,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
-                player.state != PlayerData.PlayerMovementState.climbingTorch &&
+                // player.state != PlayerData.PlayerMovementState.climbingTorch &&
                 player.state != PlayerData.PlayerMovementState.landing &&
                 player.state != PlayerData.PlayerMovementState.landingSlingshot &&
                 player.state != PlayerData.PlayerMovementState.landingTorch &&
@@ -172,11 +180,15 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing
+                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
+                    )
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing && player.state != PlayerData.PlayerMovementState.climbingTorch)
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing
+                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
+                    )
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
 
@@ -202,8 +214,10 @@ public class PlayerMovement : MonoBehaviour
             PlayerData.PlayerMovementState.landingSlingshot or
             PlayerData.PlayerMovementState.walkingSlingshot or
             PlayerData.PlayerMovementState.walkingTorch or
-            PlayerData.PlayerMovementState.landingTorch or
-            PlayerData.PlayerMovementState.climbingTorch => walkingSpeed,
+            PlayerData.PlayerMovementState.landingTorch
+            // or
+            // PlayerData.PlayerMovementState.climbingTorch 
+            => walkingSpeed,
             PlayerData.PlayerMovementState.running or
             PlayerData.PlayerMovementState.jumping or
             PlayerData.PlayerMovementState.falling or
