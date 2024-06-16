@@ -154,7 +154,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 4.571429
+  - time: 4.857143
     functionName: GoToPrison
     data: 
     objectReferenceParameter: {fileID: 0}
