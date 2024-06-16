@@ -39,6 +39,7 @@ public class PlayerData : MonoBehaviour
     public int itemSelectedPosition = 0;
     public bool collectedSlingshot = false;
     public bool collectedTorch = false;
+    public bool collectedKey = false;
     public bool withTorch = false;
     public bool dead = false;
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollectTorch : MonoBehaviour
 {
+    public Transform torchLight;
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player"))
@@ -12,9 +14,10 @@ public class CollectTorch : MonoBehaviour
             Rigidbody2D rb = collider.gameObject.GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Static;
             player.collectedTorch = true;
-            // player.withTorch = false;
             player.state = PlayerData.PlayerMovementState.idleTorch;
             rb.bodyType = RigidbodyType2D.Dynamic;
+            Destroy(torchLight.gameObject);
+            Destroy(transform.gameObject);
         }
     }
 }
