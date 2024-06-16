@@ -12,8 +12,11 @@ public class WaterFallTorch : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player.withTorch = false;
-            torchOffSoundEffect.Play();
+            if (player.withTorch)
+            {
+                player.withTorch = false;
+                torchOffSoundEffect.Play();
+            }
         }
     }
 }
