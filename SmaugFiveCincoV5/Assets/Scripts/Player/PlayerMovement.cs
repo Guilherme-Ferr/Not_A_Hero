@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator animator;
     public bool isPaused;
     private float dirX = 0f;
     private float runningSpeed = 4f;
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -90,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
                         if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                         {
                             player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
+                            // animator.speed = 1;
                         }
                         else
                         {
@@ -136,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
                         if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                         {
                             player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
+                            // animator.speed = 1;
                         }
                         else
                         {
@@ -169,14 +173,22 @@ public class PlayerMovement : MonoBehaviour
                 player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
                 player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
                 {
-                    if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
-                    {
-                        player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
-                    }
-                    else
-                    {
-                        SetIdle();
-                    }
+                    // if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
+                    // {
+                    //     player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
+                    //     if (!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
+                    //     {
+                    //         animator.speed = 0;
+                    //     }
+                    //     else
+                    //     {
+                    //         animator.speed = 1;
+                    //     }
+                    // }
+                    // else
+                    // {
+                    SetIdle();
+                    // }
                 }
                 else
                 {

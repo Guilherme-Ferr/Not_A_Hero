@@ -9,8 +9,7 @@ public class NextCutscene : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(SceneManager.GetActiveScene().buildIndex);
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             anim = GetComponent<Animator>();
             anim.Play("CeneTwo");

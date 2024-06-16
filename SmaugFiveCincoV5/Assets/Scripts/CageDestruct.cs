@@ -6,13 +6,15 @@ public class CageDestruct : MonoBehaviour
 {
     public PlayerData player;
     [SerializeField] public PlayerSound playerSound;
+    private bool destroyed = false;
 
     public void DestroyWall()
     {
-        if (player.state == PlayerData.PlayerMovementState.shootingSlingshot && player.facingSide == PlayerData.FacingSide.right)
+        if (player.state == PlayerData.PlayerMovementState.shootingSlingshot && player.facingSide == PlayerData.FacingSide.right && !destroyed)
         {
-            Destroy(transform.gameObject);
             playerSound.PlayWallDestroyed();
+            Destroy(transform.gameObject);
+            destroyed = true;
         }
     }
 }

@@ -47,3 +47,9 @@ MonoBehaviour:
         eu poderia continuar dizendo como voc\xEA pode escapar daqui, mas eu odeio
         tutoriais. Boa sorte."
       english: S
+  - actorName: E. Caramello
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: "E. Caramello: Ah, quase ia esquecendo, use a tecla (Z) para atirar
+        com o estilingue, mas voce n\xE3o ouviu isso de mim ein..."
+      english: S
