@@ -21,7 +21,7 @@ public class PlayerShootSlingshot : MonoBehaviour
 
     private void ShootgSlingshot()
     {
-        if (Input.GetKey(KeyCode.Z) && player.collectedSlingshot && (
+        if (Input.GetKeyDown(KeyCode.Z) && player.collectedSlingshot && rb.bodyType == RigidbodyType2D.Dynamic && (
                 player.state == PlayerData.PlayerMovementState.idleSlingshot ||
                 player.state == PlayerData.PlayerMovementState.walkingSlingshot ||
                 player.state == PlayerData.PlayerMovementState.runningSlingshot ||
@@ -29,7 +29,6 @@ public class PlayerShootSlingshot : MonoBehaviour
             )
         )
         {
-            rb.bodyType = RigidbodyType2D.Static;
             player.state = player.withTorch ? PlayerData.PlayerMovementState.shootingSlingshotTorch : PlayerData.PlayerMovementState.shootingSlingshot;
             playerSound.PlaySlingShoot();
         }

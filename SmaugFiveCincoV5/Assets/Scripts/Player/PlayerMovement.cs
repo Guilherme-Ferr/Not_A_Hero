@@ -79,9 +79,11 @@ public class PlayerMovement : MonoBehaviour
                 // player.state != PlayerData.PlayerMovementState.climbingTorch &&
                 player.state != PlayerData.PlayerMovementState.landing &&
                 player.state != PlayerData.PlayerMovementState.landingSlingshot &&
-                player.state != PlayerData.PlayerMovementState.landingTorch &&
-                player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
-                player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
+                player.state != PlayerData.PlayerMovementState.landingTorch
+                // &&
+                // player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
+                // player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch
+                )
                 {
                     if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
                     {
@@ -126,9 +128,11 @@ public class PlayerMovement : MonoBehaviour
                 // player.state != PlayerData.PlayerMovementState.climbingTorch &&
                 player.state != PlayerData.PlayerMovementState.landing &&
                 player.state != PlayerData.PlayerMovementState.landingSlingshot &&
-                player.state != PlayerData.PlayerMovementState.landingTorch &&
-                player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
-                player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
+                player.state != PlayerData.PlayerMovementState.landingTorch
+                // &&
+                // player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
+                // player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch
+                )
                 {
                     if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
                     {
@@ -212,8 +216,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetIdle()
     {
-        player.state = player.withTorch ? PlayerData.PlayerMovementState.idleTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
         rb.bodyType = RigidbodyType2D.Dynamic;
+        player.state = player.withTorch ? PlayerData.PlayerMovementState.idleTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.idleSlingshot : PlayerData.PlayerMovementState.idle;
     }
 
     private float ControlPlayerSpeed()
