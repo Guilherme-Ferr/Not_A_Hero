@@ -7,6 +7,7 @@ public class WaterFallTorch : MonoBehaviour
 {
     public PlayerData player;
     public AudioSource torchOffSoundEffect;
+    public AudioSource torchContinuesSoundEffect;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,8 +15,9 @@ public class WaterFallTorch : MonoBehaviour
         {
             if (player.withTorch)
             {
-                player.withTorch = false;
                 torchOffSoundEffect.Play();
+                torchContinuesSoundEffect.Stop();
+                player.withTorch = false;
             }
         }
     }
