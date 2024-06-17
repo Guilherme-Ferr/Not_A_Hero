@@ -19,5 +19,10 @@ MonoBehaviour:
   - actorName: Placa
     profile: {fileID: 905558704, guid: 37ffd2c13c7cc1e4e96894cd9c6ac7be, type: 3}
     sentence:
-      portuguese: Em caso de emergencia, retire a espada.
+      portuguese: Em caso de emergencia, retire a chave da espada.
+      english: A
+  - actorName: Placa
+    profile: {fileID: 905558704, guid: 37ffd2c13c7cc1e4e96894cd9c6ac7be, type: 3}
+    sentence:
+      portuguese: Em hipotese alguma retire a ESPADA!
       english: A
