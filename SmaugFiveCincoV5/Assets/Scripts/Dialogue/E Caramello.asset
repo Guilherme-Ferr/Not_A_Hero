@@ -30,8 +30,13 @@ MonoBehaviour:
   - actorName: E. Caramello
     profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
     sentence:
-      portuguese: "E. Caramello: Bom, mas se quiser sair da\xED, por que n\xE3o tenta
-        pegar esse estilingue ai na sua cela e atirar em dire\xE7\xE3o a parede?"
+      portuguese: "E. Caramello: Bom, mas se quiser sair da\xED "
+      english: S
+  - actorName: E. Caramello
+    profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
+    sentence:
+      portuguese: "E. Caramello: Por que n\xE3o tenta pegar esse estilingue ai na
+        sua cela e atirar em dire\xE7\xE3o a parede?"
       english: S
   - actorName: E. Caramello
     profile: {fileID: -432149773, guid: 88b6c9bd3acb0264b9eda1df9b52ed7f, type: 3}
