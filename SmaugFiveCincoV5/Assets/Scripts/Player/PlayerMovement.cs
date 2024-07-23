@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float walkingSpeed = 3f;
     private float crouchingSpeed = 2f;
     private float jumpForce = 10f;
+    public float maxFallSpeed = -10f;
     public CapsuleCollider2D groundCheck;
     public LayerMask groundLayer;
 
@@ -34,13 +35,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        // Limitar a velocidade de queda
+        if (rb.velocity.y < maxFallSpeed)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, maxFallSpeed);
+        }
+    }
+
     private void JumpPlayer()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.collectedSlingshot &&
         player.state != PlayerData.PlayerMovementState.dropingBridge &&
         player.state != PlayerData.PlayerMovementState.climbingBridge &&
         player.state != PlayerData.PlayerMovementState.climbing &&
-        // player.state != PlayerData.PlayerMovementState.climbingTorch &&
         player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
         player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch
         )
@@ -76,14 +85,9 @@ public class PlayerMovement : MonoBehaviour
                     player.facingSide = PlayerData.FacingSide.right;
                 }
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
-                // player.state != PlayerData.PlayerMovementState.climbingTorch &&
                 player.state != PlayerData.PlayerMovementState.landing &&
                 player.state != PlayerData.PlayerMovementState.landingSlingshot &&
-                player.state != PlayerData.PlayerMovementState.landingTorch
-                // &&
-                // player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
-                // player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch
-                )
+                player.state != PlayerData.PlayerMovementState.landingTorch)
                 {
                     if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
                     {
@@ -94,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
                         if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                         {
                             player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
-                            // animator.speed = 1;
                         }
                         else
                         {
@@ -104,15 +107,11 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing
-                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
-                    )
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing
-                    //  && player.state != PlayerData.PlayerMovementState.climbingTorch
-                     )
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
                     }
@@ -125,14 +124,9 @@ public class PlayerMovement : MonoBehaviour
                     player.facingSide = PlayerData.FacingSide.left;
                 }
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
-                // player.state != PlayerData.PlayerMovementState.climbingTorch &&
                 player.state != PlayerData.PlayerMovementState.landing &&
                 player.state != PlayerData.PlayerMovementState.landingSlingshot &&
-                player.state != PlayerData.PlayerMovementState.landingTorch
-                // &&
-                // player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
-                // player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch
-                )
+                player.state != PlayerData.PlayerMovementState.landingTorch)
                 {
                     if (Input.GetKey(KeyCode.LeftShift) && player.collectedSlingshot)
                     {
@@ -143,7 +137,6 @@ public class PlayerMovement : MonoBehaviour
                         if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
                         {
                             player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
-                            // animator.speed = 1;
                         }
                         else
                         {
@@ -153,15 +146,11 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing
-                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
-                    )
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing
-                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
-                    )
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
                     }
@@ -170,44 +159,23 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 if (IsGrounded() && player.state != PlayerData.PlayerMovementState.climbing &&
-                // player.state != PlayerData.PlayerMovementState.climbingTorch &&
                 player.state != PlayerData.PlayerMovementState.landing &&
                 player.state != PlayerData.PlayerMovementState.landingSlingshot &&
                 player.state != PlayerData.PlayerMovementState.landingTorch &&
                 player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
                 player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
                 {
-                    // if (Input.GetKey(KeyCode.LeftControl) && player.collectedSlingshot)
-                    // {
-                    //     player.state = player.withTorch ? PlayerData.PlayerMovementState.crouchingTorch : PlayerData.PlayerMovementState.crouching;
-                    //     if (!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
-                    //     {
-                    //         animator.speed = 0;
-                    //     }
-                    //     else
-                    //     {
-                    //         animator.speed = 1;
-                    //     }
-                    // }
-                    // else
-                    // {
                     SetIdle();
-                    // }
                 }
                 else
                 {
-                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing
-                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
-                    )
+                    if (rb.velocity.y > .1f && player.state != PlayerData.PlayerMovementState.climbing)
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.jumpingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.jumpingSlingshot : PlayerData.PlayerMovementState.jumping;
                     }
-                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing
-                    // && player.state != PlayerData.PlayerMovementState.climbingTorch
-                    )
+                    else if (rb.velocity.y < -.1f && player.state != PlayerData.PlayerMovementState.climbing)
                     {
                         player.state = player.withTorch ? PlayerData.PlayerMovementState.fallingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.fallingSlingshot : PlayerData.PlayerMovementState.falling;
-
                     }
                 }
             }
@@ -230,10 +198,7 @@ public class PlayerMovement : MonoBehaviour
             PlayerData.PlayerMovementState.landingSlingshot or
             PlayerData.PlayerMovementState.walkingSlingshot or
             PlayerData.PlayerMovementState.walkingTorch or
-            PlayerData.PlayerMovementState.landingTorch
-            // or
-            // PlayerData.PlayerMovementState.climbingTorch 
-            => walkingSpeed,
+            PlayerData.PlayerMovementState.landingTorch => walkingSpeed,
             PlayerData.PlayerMovementState.running or
             PlayerData.PlayerMovementState.jumping or
             PlayerData.PlayerMovementState.falling or
