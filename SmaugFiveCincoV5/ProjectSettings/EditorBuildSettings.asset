@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prison.unity
     guid: 75e4634f0c1aa9c4fa07b685366c7c3b
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 0527de607a3d80748a7ce4961b263fa6
   m_configObjects: {}
