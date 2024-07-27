@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;  // Referência ao menu de pausa
-    private bool isPaused = false;  // Flag para verificar se o jogo está pausado
+    public bool isPaused = false;  // Flag para verificar se o jogo está pausado
 
     void Start()
     {
