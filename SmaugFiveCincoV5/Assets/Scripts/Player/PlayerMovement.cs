@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float runningSpeed = 4f;
     private float walkingSpeed = 3f;
     private float crouchingSpeed = 2f;
-    private float jumpForce = 10f;
+    private float jumpForce = 12f;
     public float maxFallSpeed = -10f;
     public CapsuleCollider2D groundCheck;
     public LayerMask groundLayer;
