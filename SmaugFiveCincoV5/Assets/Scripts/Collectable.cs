@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    [SerializeField] public ItemManager.CollectableItems collectableType;
+    // [SerializeField] public ItemManager.CollectableItems collectableType;
 }

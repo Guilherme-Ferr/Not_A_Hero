@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1830653735041580376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6758213349630066609}
+  m_Layer: 6
+  m_Name: PickUp Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6758213349630066609
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830653735041580376}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3414438521073975916}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3219414358453280247
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +143,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2490378262809736767}
+  - {fileID: 6758213349630066609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1909377087046133417
@@ -275,6 +307,9 @@ MonoBehaviour:
   state: 0
   itemSelectedPosition: 0
   collectedSlingshot: 0
+  collectedTorch: 0
+  collectedKey: 0
+  withTorch: 0
   dead: 0
 --- !u!114 &8789217655567417208
 MonoBehaviour:
@@ -301,6 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
+  maxFallSpeed: -10
   groundCheck: {fileID: 0}
   groundLayer:
     serializedVersion: 2
@@ -330,6 +366,7 @@ MonoBehaviour:
   slot5: {fileID: 0}
   player: {fileID: 4642035217936554389}
   storage: {fileID: 0}
+  playerSound: {fileID: 0}
 --- !u!114 &7284016352418187565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +382,10 @@ MonoBehaviour:
   grassFootSoundEffect: {fileID: 1150751428385566784}
   woodFootSoundEffect: {fileID: 1495461222560697627}
   stoneFootSoundEffect: {fileID: 7380961242196072272}
+  chainSoundEffect: {fileID: 0}
+  collectVegetationSoundEffect: {fileID: 0}
+  slingShootSoundEffect: {fileID: 0}
+  wallBreakSoundEffect: {fileID: 0}
   playerNoise: 0
 --- !u!82 &1150751428385566784
 AudioSource:
@@ -660,6 +701,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4642035217936554389}
+  playerSound: {fileID: 0}
+  cageWall: {fileID: 0}
 --- !u!114 &3016226307838827885
 MonoBehaviour:
   m_ObjectHideFlags: 0
