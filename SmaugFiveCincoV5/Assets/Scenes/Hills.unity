@@ -3893,6 +3893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333bf76ce4c517e4b90bbaa57e66d6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectVegetable: {fileID: 614103192}
+  fadeManager: {fileID: 1305611025}
 --- !u!1 &506714940
 GameObject:
   m_ObjectHideFlags: 0
@@ -15540,7 +15542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 641736760}
-  fadeDuration: 0
+  fadeDuration: 1.5
 --- !u!82 &1305611026
 AudioSource:
   m_ObjectHideFlags: 0
