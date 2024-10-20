@@ -8,6 +8,7 @@ public class PlayerShootSlingshot : MonoBehaviour
     [SerializeField] public PlayerData player;
     [SerializeField] public PlayerSound playerSound;
     [SerializeField] public CageDestruct cageWall;
+    [SerializeField] public Slingshot slingshot;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class PlayerShootSlingshot : MonoBehaviour
 
     private void ShootgSlingshot()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && player.collectedSlingshot && rb.bodyType == RigidbodyType2D.Dynamic && (
+        if (Input.GetKeyDown(KeyCode.Z) && player.collectedSlingshot && slingshot.pedras > 0 && rb.bodyType == RigidbodyType2D.Dynamic && (
                 player.state == PlayerData.PlayerMovementState.idleSlingshot ||
                 player.state == PlayerData.PlayerMovementState.walkingSlingshot ||
                 player.state == PlayerData.PlayerMovementState.runningSlingshot ||
