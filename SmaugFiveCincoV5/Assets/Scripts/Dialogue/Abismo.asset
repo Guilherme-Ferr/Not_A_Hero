@@ -19,15 +19,15 @@ MonoBehaviour:
   - actorName: Abismo
     profile: {fileID: 0}
     sentence:
-      portuguese: "Voc\xEA olha a distancia at\xE9 o outro lado da ponte"
+      portuguese: "Edric: Voc\xEA olha a distancia at\xE9 o outro lado da ponte"
       english: 
   - actorName: Abismo
     profile: {fileID: 0}
     sentence:
-      portuguese: "Depois olha a distancia at\xE9 o ch\xE3o"
+      portuguese: "Edric: Depois olha a distancia at\xE9 o ch\xE3o"
       english: 
   - actorName: Abismo
     profile: {fileID: 0}
     sentence:
-      portuguese: "N\xE3o parece uma boa ideia tentar pular..."
+      portuguese: "Edric: N\xE3o parece uma boa ideia tentar pular..."
       english: 
