@@ -12,7 +12,7 @@ public class NextCutscene : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             anim = GetComponent<Animator>();
-            anim.Play("CeneTwo");
+            anim.Play("CeneOneDefault");
         }
     }
 
