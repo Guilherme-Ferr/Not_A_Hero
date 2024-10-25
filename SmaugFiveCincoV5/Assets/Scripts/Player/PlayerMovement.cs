@@ -20,6 +20,29 @@ public class PlayerMovement : MonoBehaviour
     public GrassPickup grassPickup;
 
     [SerializeField] public PlayerData player;
+    #region GetSet
+    public float WalkingSpeed
+    {
+        get { return walkingSpeed; }
+        set { walkingSpeed = value; }
+    }
+    public float RunningSpeed
+    {
+        get { return runningSpeed; }
+        set { runningSpeed = value; }
+    }
+    public float CrouchingSpeed
+    {
+        get { return crouchingSpeed; }
+        set { crouchingSpeed = value; }
+    }
+    public float JumpForce
+    {
+        get { return jumpForce; }
+        set { jumpForce = value; }
+    }
+
+    #endregion
 
     private void Start()
     {
