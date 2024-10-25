@@ -20,7 +20,8 @@ public class SpiderTrap : MonoBehaviour
     {
         if (!player.withTorch)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(5);
+
             Debug.Log("Sem tocha");
         }
         else

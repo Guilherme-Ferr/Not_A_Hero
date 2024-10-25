@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cene 1.unity
     guid: 98d61d7f84bed87408f8faa3c5d5f255
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cene 2.unity
     guid: dd79ef4c960aa5a4c869f7fcd9953885
   - enabled: 1
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 0527de607a3d80748a7ce4961b263fa6
+  - enabled: 1
+    path: Assets/Scenes/Spider.unity
+    guid: 4e02aedb53ff65c42aca08da299c3eac
   m_configObjects: {}
