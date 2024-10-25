@@ -8,11 +8,15 @@ public class SpiderTrap : MonoBehaviour
     public PlayerData player;
     public PlayerMovement playerMovement;
     private Animator anim;
+    public GameObject kill;
+    public FadeManager fadeManager;
+
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        fadeManager.FadeOut();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -33,7 +37,8 @@ public class SpiderTrap : MonoBehaviour
             playerMovement.RunningSpeed = 0;
             playerMovement.CrouchingSpeed = 0;
             playerMovement.JumpForce = 0;
-
+            player.collectedTorch = false;
+            player.collectedSlingshot = false;
 
             Debug.Log("Sem tocha");
         }
@@ -41,5 +46,9 @@ public class SpiderTrap : MonoBehaviour
         {
             Debug.Log("Com tocha");
         }
+    }
+    public void SpiderKill()
+    {
+        kill.SetActive(true);
     }
 }
