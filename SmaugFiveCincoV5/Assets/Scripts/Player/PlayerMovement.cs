@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxFallSpeed = -10f;
     public CapsuleCollider2D groundCheck;
     public LayerMask groundLayer;
+    public GrassPickup grassPickup;
 
     [SerializeField] public PlayerData player;
 
@@ -101,7 +102,14 @@ public class PlayerMovement : MonoBehaviour
                         }
                         else
                         {
-                            player.state = player.withTorch ? PlayerData.PlayerMovementState.walkingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                            if (grassPickup.isCarrying)
+                            {
+                                player.state = PlayerData.PlayerMovementState.carryingObject;
+                            }
+                            else
+                            {
+                                player.state = player.withTorch ? PlayerData.PlayerMovementState.walkingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                            }
                         }
                     }
                 }
@@ -140,7 +148,14 @@ public class PlayerMovement : MonoBehaviour
                         }
                         else
                         {
-                            player.state = player.withTorch ? PlayerData.PlayerMovementState.walkingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                            if (grassPickup.isCarrying)
+                            {
+                                player.state = PlayerData.PlayerMovementState.carryingObject;
+                            }
+                            else
+                            {
+                                player.state = player.withTorch ? PlayerData.PlayerMovementState.walkingTorch : player.collectedSlingshot ? PlayerData.PlayerMovementState.walkingSlingshot : PlayerData.PlayerMovementState.walking;
+                            }
                         }
                     }
                 }
@@ -165,7 +180,15 @@ public class PlayerMovement : MonoBehaviour
                 player.state != PlayerData.PlayerMovementState.shootingSlingshot &&
                 player.state != PlayerData.PlayerMovementState.shootingSlingshotTorch)
                 {
-                    SetIdle();
+                    if (grassPickup.isCarrying)
+                    {
+                        animator.speed = 0;
+                        animator.Play("PlayerCarryingObject", 0, 0);
+                    }
+                    else
+                    {
+                        SetIdle();
+                    }
                 }
                 else
                 {
@@ -198,6 +221,7 @@ public class PlayerMovement : MonoBehaviour
             PlayerData.PlayerMovementState.landingSlingshot or
             PlayerData.PlayerMovementState.walkingSlingshot or
             PlayerData.PlayerMovementState.walkingTorch or
+            PlayerData.PlayerMovementState.carryingObject or
             PlayerData.PlayerMovementState.landingTorch => walkingSpeed,
             PlayerData.PlayerMovementState.running or
             PlayerData.PlayerMovementState.jumping or

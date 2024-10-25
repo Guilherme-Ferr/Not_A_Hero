@@ -33,6 +33,7 @@ public class PlayerData : MonoBehaviour
         climbingTorch,
         landingTorch,
         shootingSlingshotTorch,
+        carryingObject,
     }
     public FacingSide facingSide = FacingSide.right;
     public PlayerMovementState state = PlayerMovementState.idle;
