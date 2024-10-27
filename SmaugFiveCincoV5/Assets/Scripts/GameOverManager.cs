@@ -9,6 +9,7 @@ public class GameOverManager : MonoBehaviour
     public List<GameObject> gameOverUIs; // Lista de UIs de Game Over, uma para cada tipo de morte
     public GameOverAnimationManager gameOverAnimationManager; // Referência ao GameOverAnimationManager
     private Dictionary<string, GameObject> gameOverUIDictionary;
+    private GameObject gameOverUItoClose;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class GameOverManager : MonoBehaviour
         // else 
         if (gameOverUIDictionary.TryGetValue(collision.gameObject.tag, out GameObject gameOverUI))
         {
+            gameOverUItoClose = gameOverUI;
             GameOver(gameOverUI);
         }
     }
@@ -49,6 +51,6 @@ public class GameOverManager : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f; // Despausa o jogo
-        fadeManager.RestartLevel(); // Chama o método de reiniciar com fade
+        fadeManager.RestartLevel(gameOverUItoClose); // Chama o método de reiniciar com fade
     }
 }

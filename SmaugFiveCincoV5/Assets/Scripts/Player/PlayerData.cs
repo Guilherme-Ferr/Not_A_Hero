@@ -43,4 +43,13 @@ public class PlayerData : MonoBehaviour
     public bool collectedKey = false;
     public bool withTorch = false;
     public bool dead = false;
+
+    public void SetState(PlayerData state)
+    {
+        collectedSlingshot = state.collectedSlingshot;
+        collectedTorch = state.collectedTorch;
+        collectedKey = state.collectedKey;
+        withTorch = state.withTorch;
+        dead = false;
+    }
 }

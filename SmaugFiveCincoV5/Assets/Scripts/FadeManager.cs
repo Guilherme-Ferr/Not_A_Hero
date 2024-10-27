@@ -8,17 +8,21 @@ public class FadeManager : MonoBehaviour
 {
     public Image fadeImage;
     public float fadeDuration = 1f;
+    private PlayerData player;
+    public CheckpointManager cpManager;
 
     void Start()
     {
+        player = transform.GetComponent<PlayerData>();
         // Inicializa o fade in
         StartCoroutine(FadeIn());
     }
 
-    public void RestartLevel()
+    public void RestartLevel(GameObject gameOverUItoClose)
     {
         // Inicia o fade out antes de reiniciar a fase
-        StartCoroutine(FadeOutAndRestart());
+        // StartCoroutine(FadeOutAndRestart(gameOverUItoClose));
+        FadeOutAndRestart(gameOverUItoClose);
     }
 
     private IEnumerator FadeIn()
@@ -38,12 +42,23 @@ public class FadeManager : MonoBehaviour
         fadeImage.color = color;
     }
 
-    private IEnumerator FadeOutAndRestart()
+    private void FadeOutAndRestart(GameObject gameOverUItoClose)
     {
-        yield return StartCoroutine(FadeOut());
+        // yield return StartCoroutine(FadeOut());
 
-        // Reinicia a cena
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (cpManager.checkpointReached)
+        {
+            // Restaurar posição e estado
+            transform.position = cpManager.savedPosition;
+            PlayerData savedState = cpManager.savedState;
+            player.SetState(savedState);
+            gameOverUItoClose.SetActive(false);
+        }
+        else
+        {
+            // Voltar para o início da fase ou outra lógica de morte
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     public IEnumerator FadeOut()
