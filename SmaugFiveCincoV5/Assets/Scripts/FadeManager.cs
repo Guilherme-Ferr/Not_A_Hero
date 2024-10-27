@@ -8,12 +8,12 @@ public class FadeManager : MonoBehaviour
 {
     public Image fadeImage;
     public float fadeDuration = 1f;
-    private PlayerData player;
-    public CheckpointManager cpManager;
+    public PlayerData player;
+    public Checkpoint firstCheckpoint;
 
     void Start()
     {
-        player = transform.GetComponent<PlayerData>();
+        // player = transform.GetComponent<PlayerData>();
         // Inicializa o fade in
         StartCoroutine(FadeIn());
     }
@@ -46,12 +46,10 @@ public class FadeManager : MonoBehaviour
     {
         // yield return StartCoroutine(FadeOut());
 
-        if (cpManager.checkpointReached)
+        if (firstCheckpoint.checkpointReached)
         {
             // Restaurar posição e estado
-            transform.position = cpManager.savedPosition;
-            PlayerData savedState = cpManager.savedState;
-            player.SetState(savedState);
+            player.SetState();
             gameOverUItoClose.SetActive(false);
         }
         else
