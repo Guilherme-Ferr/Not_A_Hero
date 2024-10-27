@@ -19,6 +19,15 @@ public class WaterFallTorch : MonoBehaviour
                 torchContinuesSoundEffect.Stop();
                 player.withTorch = false;
             }
+            player.isInWaterfall = true;  // Marca que o jogador está na cachoeira
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            player.isInWaterfall = false;  // Marca que o jogador saiu da cachoeira
         }
     }
 }

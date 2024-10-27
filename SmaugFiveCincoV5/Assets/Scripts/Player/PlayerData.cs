@@ -42,6 +42,7 @@ public class PlayerData : MonoBehaviour
     public bool collectedTorch = false;
     public bool collectedKey = false;
     public bool withTorch = false;
+    public bool isInWaterfall = false;
     public bool dead = false;
 
     public void SetState(PlayerData state)

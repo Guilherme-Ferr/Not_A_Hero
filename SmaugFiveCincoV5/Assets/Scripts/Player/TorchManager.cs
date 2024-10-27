@@ -32,7 +32,7 @@ public class TorchManager : MonoBehaviour
             torchLight.enabled = player.withTorch;
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && player.collectedTorch)
+        if (Input.GetKeyDown(KeyCode.X) && player.collectedTorch && !player.isInWaterfall)
         {
             player.withTorch = !player.withTorch;
             if (!player.withTorch)
