@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerData : MonoBehaviour
@@ -45,12 +46,26 @@ public class PlayerData : MonoBehaviour
     public bool isInWaterfall = false;
     public bool dead = false;
 
-    public void SetState(PlayerData state)
+    public bool collectedSlingshotState;
+    public bool collectedTorchState;
+    public bool collectedKeyState;
+    public Vector3 savedPosition;
+
+    public void SaveState(PlayerData state)
     {
-        collectedSlingshot = state.collectedSlingshot;
-        collectedTorch = state.collectedTorch;
-        collectedKey = state.collectedKey;
-        withTorch = state.withTorch;
+        collectedSlingshotState = state.collectedSlingshot;
+        collectedTorchState = state.collectedTorch;
+        collectedKeyState = state.collectedKey;
+        savedPosition = state.transform.position;
+    }
+
+    public void SetState()
+    {
+        collectedSlingshot = collectedSlingshotState;
+        collectedTorch = collectedTorchState;
+        collectedKey = collectedKeyState;
+        withTorch = false;
         dead = false;
+        transform.position = savedPosition;
     }
 }
