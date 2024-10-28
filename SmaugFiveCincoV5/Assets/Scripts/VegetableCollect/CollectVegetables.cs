@@ -33,6 +33,7 @@ public class CollectVegetables : MonoBehaviour
 
             finishedCollecting = true;
             textMesh.text = "Estenda suas roupas.";
+            tutorialTextMesh.text = null;
             grassPickup.DropGrass();
 
             //tocar som de bau recheado
