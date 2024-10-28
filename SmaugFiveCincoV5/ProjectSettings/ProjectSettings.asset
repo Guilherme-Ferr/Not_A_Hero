@@ -22,7 +22,7 @@ PlayerSettings:
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
-  m_SplashScreenDrawMode: 0
+  m_SplashScreenDrawMode: 1
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1
@@ -40,11 +40,15 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: 79f9fa6e49eb81b469aa51053ddf04a9, type: 3}
+  - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
+    duration: 3
+  - logo: {fileID: 21300000, guid: 86fbcffb14d8d754ea1e0164d0cf3814, type: 3}
     duration: 4
   - logo: {fileID: 21300000, guid: f84b2c2998b58dc4fb01e8ff4d2e3163, type: 3}
     duration: 4
   - logo: {fileID: 21300000, guid: 9f2c4151c35b9114f9941c21816b82be, type: 3}
+    duration: 4
+  - logo: {fileID: 21300000, guid: 9ce7f0908a6fa0849a3c22cb77459b6e, type: 3}
     duration: 4
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
