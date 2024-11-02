@@ -15,6 +15,7 @@ TagManager:
   - Spider
   - Poison
   - Bird
+  - Projetil
   layers:
   - Default
   - TransparentFX
