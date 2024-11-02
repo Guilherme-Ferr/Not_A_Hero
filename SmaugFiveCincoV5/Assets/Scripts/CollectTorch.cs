@@ -16,8 +16,16 @@ public class CollectTorch : MonoBehaviour
             player.collectedTorch = true;
             player.state = PlayerData.PlayerMovementState.idleTorch;
             rb.bodyType = RigidbodyType2D.Dynamic;
-            Destroy(torchLight.gameObject);
-            Destroy(transform.gameObject);
+            // Destroy(torchLight.gameObject);
+            // Destroy(transform.gameObject);
+
+            // SpriteRenderer spriteRenderer1 = torchLight.gameObject.GetComponent<SpriteRenderer>();
+            // SpriteRenderer spriteRenderer2 = transform.gameObject.GetComponent<SpriteRenderer>();
+
+            // spriteRenderer2.
+
+            // torchLight.gameObject.SetActive(false);
+            // transform.gameObject.SetActive(false);
         }
     }
 }

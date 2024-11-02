@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded() && player.collectedSlingshot &&
+        if ((Input.GetKeyDown(KeyCode.UpArrow) ||  Input.GetKeyDown(KeyCode.Space) ) && IsGrounded() && player.collectedSlingshot &&
         player.state != PlayerData.PlayerMovementState.dropingBridge &&
         player.state != PlayerData.PlayerMovementState.climbingBridge &&
         player.state != PlayerData.PlayerMovementState.climbing &&
