@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isPaused;
     private float dirX = 0f;
     private float runningSpeed = 4f;
-    private float walkingSpeed = 2f;
+    private float walkingSpeed = 3f;
     private float crouchingSpeed = 2f;
     private float jumpForce = 12f;
     public float maxFallSpeed = -10f;
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpPlayer()
     {
-        if ((Input.GetKeyDown(KeyCode.UpArrow) ||  Input.GetKeyDown(KeyCode.Space) ) && IsGrounded() && player.collectedSlingshot &&
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space)) && IsGrounded() && player.collectedSlingshot &&
         player.state != PlayerData.PlayerMovementState.dropingBridge &&
         player.state != PlayerData.PlayerMovementState.climbingBridge &&
         player.state != PlayerData.PlayerMovementState.climbing &&
