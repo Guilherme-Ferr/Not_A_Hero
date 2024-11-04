@@ -33,6 +33,7 @@ public class PlayerSound : MonoBehaviour
     {
         playerNoise = playerData.state switch
         {
+            PlayerData.PlayerMovementState.walking or
             PlayerData.PlayerMovementState.walkingSlingshot or
             PlayerData.PlayerMovementState.jumpingSlingshot or
             PlayerData.PlayerMovementState.fallingSlingshot or

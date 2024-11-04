@@ -6,6 +6,8 @@ public class CollectSlingshot : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public AudioSource keyCollectSoundEffect;
+    private bool alreadyCollected = false;
+    public Slingshot slingshot;
 
     private void Start()
     {
@@ -16,10 +18,15 @@ public class CollectSlingshot : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            PlayerData player = collider.gameObject.GetComponent<PlayerData>();
-            player.collectedSlingshot = true;
-            spriteRenderer.sprite = null;
-            keyCollectSoundEffect.Play();
+            slingshot.pedras = 5;
+            if (!alreadyCollected)
+            {
+                PlayerData player = collider.gameObject.GetComponent<PlayerData>();
+                player.collectedSlingshot = true;
+                spriteRenderer.sprite = null;
+                keyCollectSoundEffect.Play();
+                alreadyCollected = true;
+            }
         }
     }
 }

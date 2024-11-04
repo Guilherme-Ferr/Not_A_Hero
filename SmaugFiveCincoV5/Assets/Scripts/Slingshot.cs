@@ -7,7 +7,7 @@ public class Slingshot : MonoBehaviour
     public GameObject pedraPrefab;  // O prefab da pedra
     public Transform pontoDeDisparo; // O ponto de onde a pedra será disparada
     public float forcaDeDisparo = 10f; // A força com que a pedra será disparada
-    public int pedras = 5; // A quantidade inicial de pedras
+    public int pedras = 0; // A quantidade inicial de pedras
     public PlayerData player;
 
     public void Atirar()
