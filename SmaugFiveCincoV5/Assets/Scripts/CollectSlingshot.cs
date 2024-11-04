@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectSlingshot : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    public AudioSource keyCollectSoundEffect;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class CollectSlingshot : MonoBehaviour
             PlayerData player = collider.gameObject.GetComponent<PlayerData>();
             player.collectedSlingshot = true;
             spriteRenderer.sprite = null;
+            keyCollectSoundEffect.Play();
         }
     }
 }

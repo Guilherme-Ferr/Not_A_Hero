@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
+    public CollectTorch collectTorch;
     public enum FacingSide { left, right }
     public enum PlayerMovementState
     {
@@ -67,5 +68,6 @@ public class PlayerData : MonoBehaviour
         withTorch = false;
         dead = false;
         transform.position = savedPosition;
+        collectTorch.resetTorch();
     }
 }

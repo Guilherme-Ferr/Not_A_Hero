@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectTorch : MonoBehaviour
 {
     public Transform torchLight;
+    public AudioSource keyCollectSoundEffect;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -16,16 +17,15 @@ public class CollectTorch : MonoBehaviour
             player.collectedTorch = true;
             player.state = PlayerData.PlayerMovementState.idleTorch;
             rb.bodyType = RigidbodyType2D.Dynamic;
-            // Destroy(torchLight.gameObject);
-            // Destroy(transform.gameObject);
-
-            // SpriteRenderer spriteRenderer1 = torchLight.gameObject.GetComponent<SpriteRenderer>();
-            // SpriteRenderer spriteRenderer2 = transform.gameObject.GetComponent<SpriteRenderer>();
-
-            // spriteRenderer2.
-
-            // torchLight.gameObject.SetActive(false);
-            // transform.gameObject.SetActive(false);
+            keyCollectSoundEffect.Play();
+            torchLight.gameObject.SetActive(false);
+            transform.gameObject.SetActive(false);
         }
+    }
+
+    public void resetTorch()
+    {
+        torchLight.gameObject.SetActive(true);
+        transform.gameObject.SetActive(true);
     }
 }
