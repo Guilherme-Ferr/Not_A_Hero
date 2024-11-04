@@ -7,6 +7,7 @@ public class CollectKey : MonoBehaviour
 {
     public AudioSource keyCollectSoundEffect;
     public TextMeshProUGUI objectiveTextMesh;
+    public KeyCounter keyCounter;
     private bool alreadyCollected = false;
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -20,6 +21,7 @@ public class CollectKey : MonoBehaviour
                 keyCollectSoundEffect.Play();
                 objectiveTextMesh.text = "Volte para a saida do andar.";
                 alreadyCollected = true;
+                keyCounter.keys++;
             }
         }
     }
