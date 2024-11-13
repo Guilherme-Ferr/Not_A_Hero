@@ -20,8 +20,10 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        FollowPlayer();
+        // FollowPlayer();
+        SeekPlayer();
         ControllState();
+        FlipSpriteSide();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,31 +42,44 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void FollowPlayer()
-    {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer <= hearingRange)
-        {
-            Debug.Log("verificando som");
-            VerifyPlayerSound();
-        }
-    }
+    // void FollowPlayer()
+    // {
+    //     float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+    //     if (distanceToPlayer <= hearingRange)
+    //     {
+    //         Debug.Log("verificando som");
+    //         VerifyPlayerSound();
+    //     }
+    // }
 
-    void VerifyPlayerSound()
-    {
-        if (playerSound.playerNoise == PlayerSound.PlayerNoise.mid || playerSound.playerNoise == PlayerSound.PlayerNoise.loud)
-        {
-            Debug.Log("correndo atras");
-            SeekPlayer();
-        }
-    }
+    // void VerifyPlayerSound()
+    // {
+    //     if (playerSound.playerNoise == PlayerSound.PlayerNoise.mid || playerSound.playerNoise == PlayerSound.PlayerNoise.loud)
+    //     {
+    //         Debug.Log("correndo atras");
+    //         SeekPlayer();
+    //     }
+    // }
 
     void SeekPlayer()
     {
-        // Movimentação lateral para seguir o jogador
-        Vector2 direction = (player.position - transform.position).normalized;
-        rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
+        if (data.aggro)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+            rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
+        }
+    }
 
+    private void FlipSpriteSide()
+    {
+        if (player.position.x < transform.position.x)
+        {
+            data.facingSide = GuardData.FacingSide.left;
+        }
+        else
+        {
+            data.facingSide = GuardData.FacingSide.right;
+        }
     }
 
     void ControllState()
