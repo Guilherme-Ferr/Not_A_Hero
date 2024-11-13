@@ -16,6 +16,7 @@ TagManager:
   - Poison
   - Bird
   - Projetil
+  - GuardLimits
   layers:
   - Default
   - TransparentFX

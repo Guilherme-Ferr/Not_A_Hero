@@ -28,19 +28,39 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("GrassFloor"))
+        if (collision.gameObject.CompareTag("PrisonFloor"))
         {
+            Debug.Log("é dento11");
             isGrounded = true;
         }
+
+        // if(collision.gameObject.CompareTag("GuardLimits"))
+        // {
+        //     Debug.Log("é dento");
+        // }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("GrassFloor"))
+        if (collision.gameObject.CompareTag("PrisonFloor"))
         {
+            Debug.Log("é fora222");
             isGrounded = false;
         }
+        
+        // if(collision.gameObject.CompareTag("GuardLimits"))
+        // {
+        //     Debug.Log("é fora");
+        // }
     }
+
+    // void OnCollisionStay2D(Collision2D collision)
+    // {
+    //     if(collision.gameObject.CompareTag("GuardLimits"))
+    //     {
+    //         Debug.Log("é dento333333");
+    //     }
+    // }
 
     // void FollowPlayer()
     // {
