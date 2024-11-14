@@ -24,13 +24,14 @@ public class EnemyController : MonoBehaviour
         SeekPlayer();
         ControllState();
         FlipSpriteSide();
+        Sentinel();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PrisonFloor"))
         {
-            Debug.Log("é dento11");
+            // Debug.Log("é dento11");
             isGrounded = true;
         }
 
@@ -44,7 +45,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PrisonFloor"))
         {
-            Debug.Log("é fora222");
+            // Debug.Log("é fora222");
             isGrounded = false;
         }
         
@@ -80,6 +81,12 @@ public class EnemyController : MonoBehaviour
     //         SeekPlayer();
     //     }
     // }
+
+    void Sentinel(){
+        if(!data.aggro && !data.isSleepyGuard){
+            
+        }
+    }
 
     void SeekPlayer()
     {

@@ -5,16 +5,17 @@ using UnityEngine;
 public class GuardVision : MonoBehaviour
 {
     public GuardData guard;
+    public Transform guardPosition;
 
     private void Update()
     {
         if (guard.facingSide == GuardData.FacingSide.left)
         {
-            transform.position = new Vector3(-3, transform.position.y, transform.position.z);
+            transform.position = new Vector3(guardPosition.position.x -3, guardPosition.position.y, guardPosition.position.z);
         }
         else
         {
-            transform.position = new Vector3(3, transform.position.y, transform.position.z);
+            transform.position = new Vector3(guardPosition.position.x + 3, guardPosition.position.y, guardPosition.position.z);
         }
     }
 
@@ -22,7 +23,6 @@ public class GuardVision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // guard.canSeePlayer = true;
             guard.aggro = true;
 
         }
@@ -32,7 +32,6 @@ public class GuardVision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // guardData.canSeePlayer = false;
             guard.aggro = false;
         }
     }

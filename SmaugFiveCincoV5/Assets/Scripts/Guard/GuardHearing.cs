@@ -14,7 +14,6 @@ public class GuardHearing : MonoBehaviour
             playerSound = other.gameObject.GetComponent<PlayerSound>();
             if (playerSound.playerNoise == PlayerSound.PlayerNoise.mid || playerSound.playerNoise == PlayerSound.PlayerNoise.loud)
             {
-                // guard.canHearPlayer = true;
                 guard.aggro = true;
             }
         }
@@ -24,7 +23,6 @@ public class GuardHearing : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // guard.canHearPlayer = false;
             guard.aggro = false;
         }
     }
