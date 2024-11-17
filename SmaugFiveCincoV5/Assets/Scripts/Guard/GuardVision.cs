@@ -11,7 +11,7 @@ public class GuardVision : MonoBehaviour
     {
         if (guard.facingSide == GuardData.FacingSide.left)
         {
-            transform.position = new Vector3(guardPosition.position.x -3, guardPosition.position.y, guardPosition.position.z);
+            transform.position = new Vector3(guardPosition.position.x - 3, guardPosition.position.y, guardPosition.position.z);
         }
         else
         {
@@ -27,13 +27,4 @@ public class GuardVision : MonoBehaviour
 
         }
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            guard.aggro = false;
-        }
-    }
-
 }

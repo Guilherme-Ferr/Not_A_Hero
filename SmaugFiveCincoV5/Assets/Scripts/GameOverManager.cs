@@ -30,11 +30,6 @@ public class GameOverManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // if (collision.gameObject.CompareTag("Bird"))
-        // {
-        //     gameOverAnimationManager.PlayGameOverAnimation();
-        // }
-        // else 
         if (gameOverUIDictionary.TryGetValue(collision.gameObject.tag, out GameObject gameOverUI))
         {
             gameOverUItoClose = gameOverUI;

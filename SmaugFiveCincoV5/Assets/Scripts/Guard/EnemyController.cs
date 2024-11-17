@@ -7,8 +7,8 @@ public class EnemyController : MonoBehaviour
     public GuardData data;
     public Transform player;
     public float speed = 2.5f;
-    public float hearingRange = 2.0f;
     private bool isGrounded = false;
+    public bool playerInActionArea = false;
     public PlayerSound playerSound;
 
     private Rigidbody2D rb;
@@ -20,7 +20,6 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        // FollowPlayer();
         SeekPlayer();
         ControllState();
         FlipSpriteSide();
@@ -31,81 +30,51 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PrisonFloor"))
         {
-            // Debug.Log("é dento11");
             isGrounded = true;
         }
-
-        // if(collision.gameObject.CompareTag("GuardLimits"))
-        // {
-        //     Debug.Log("é dento");
-        // }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PrisonFloor"))
         {
-            // Debug.Log("é fora222");
             isGrounded = false;
         }
-        
-        // if(collision.gameObject.CompareTag("GuardLimits"))
-        // {
-        //     Debug.Log("é fora");
-        // }
     }
 
-    // void OnCollisionStay2D(Collision2D collision)
-    // {
-    //     if(collision.gameObject.CompareTag("GuardLimits"))
-    //     {
-    //         Debug.Log("é dento333333");
-    //     }
-    // }
+    void Sentinel()
+    {
+        if (!data.aggro && !data.isSleepyGuard)
+        {
 
-    // void FollowPlayer()
-    // {
-    //     float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-    //     if (distanceToPlayer <= hearingRange)
-    //     {
-    //         Debug.Log("verificando som");
-    //         VerifyPlayerSound();
-    //     }
-    // }
-
-    // void VerifyPlayerSound()
-    // {
-    //     if (playerSound.playerNoise == PlayerSound.PlayerNoise.mid || playerSound.playerNoise == PlayerSound.PlayerNoise.loud)
-    //     {
-    //         Debug.Log("correndo atras");
-    //         SeekPlayer();
-    //     }
-    // }
-
-    void Sentinel(){
-        if(!data.aggro && !data.isSleepyGuard){
-            
         }
     }
 
     void SeekPlayer()
     {
-        if (data.aggro)
+        if (data.aggro && playerInActionArea)
         {
             Vector2 direction = (player.position - transform.position).normalized;
             rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
 
     private void FlipSpriteSide()
     {
-        if (player.position.x < transform.position.x)
+        if (data.aggro && playerInActionArea)
         {
-            data.facingSide = GuardData.FacingSide.left;
-        }
-        else
-        {
-            data.facingSide = GuardData.FacingSide.right;
+            if (player.position.x < transform.position.x)
+            {
+                data.facingSide = GuardData.FacingSide.left;
+            }
+            else
+            {
+                data.facingSide = GuardData.FacingSide.right;
+            }
         }
     }
 
