@@ -6,10 +6,11 @@ public class GuardKill : MonoBehaviour
 {
     public GameOverManager gameOverManager;
     public GameObject gameOverUI;
+    public GuardData guard;
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && guard.aggro)
         {
             gameOverManager.GameOver(gameOverUI);
         }

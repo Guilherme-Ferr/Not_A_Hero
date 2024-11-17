@@ -11,7 +11,7 @@ public class TutorialDivManager : MonoBehaviour
 
     void Update()
     {
-        if (tutorialTextMesh.text == null)
+        if (tutorialTextMesh.text == null || tutorialTextMesh.text == "")
         {
             image.SetActive(false);
         }

@@ -44,10 +44,7 @@ public class EnemyController : MonoBehaviour
 
     void Sentinel()
     {
-        if (!data.aggro && !data.isSleepyGuard)
-        {
 
-        }
     }
 
     void SeekPlayer()
@@ -80,21 +77,24 @@ public class EnemyController : MonoBehaviour
 
     void ControllState()
     {
-        if (rb.velocity.y > 0.01f)
+        if (data.state != GuardData.GuardMovementState.sleeping)
         {
-            data.state = GuardData.GuardMovementState.jumping;
-        }
-        else if (rb.velocity.y < -0.01f && !isGrounded)
-        {
-            data.state = GuardData.GuardMovementState.falling;
-        }
-        else if (Mathf.Abs(rb.velocity.x) > 0.01f)
-        {
-            data.state = GuardData.GuardMovementState.running;
-        }
-        else
-        {
-            data.state = GuardData.GuardMovementState.idle;
+            if (rb.velocity.y > 0.01f)
+            {
+                data.state = GuardData.GuardMovementState.jumping;
+            }
+            else if (rb.velocity.y < -0.01f && !isGrounded)
+            {
+                data.state = GuardData.GuardMovementState.falling;
+            }
+            else if (Mathf.Abs(rb.velocity.x) > 0.01f)
+            {
+                data.state = GuardData.GuardMovementState.running;
+            }
+            else
+            {
+                data.state = GuardData.GuardMovementState.idle;
+            }
         }
     }
 }

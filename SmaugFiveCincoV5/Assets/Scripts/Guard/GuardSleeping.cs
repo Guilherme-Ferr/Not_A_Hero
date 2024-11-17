@@ -4,28 +4,26 @@ using UnityEngine;
 
 public class GuardSleeping : MonoBehaviour
 {
-    [SerializeField] public GuardData guard;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
+    private GuardData guard;
     private bool wokeUp = false;
 
     private void Start()
     {
-        if (guard.isSleepyGuard)
-        {
-            coll = GetComponent<BoxCollider2D>();
-            coll.isTrigger = true;
-            rb = GetComponent<Rigidbody2D>();
-            rb.bodyType = RigidbodyType2D.Static;
-            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-            sprite.flipX = true;
-            guard.state = GuardData.GuardMovementState.sleeping;
-        }
+        coll = GetComponent<BoxCollider2D>();
+        guard = GetComponent<GuardData>();
+        coll.isTrigger = true;
+        rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Static;
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.flipX = true;
+        guard.state = GuardData.GuardMovementState.sleeping;
     }
 
     private void Update()
     {
-        if (guard.isSleepyGuard && guard.aggro && !wokeUp)
+        if (guard.aggro && !wokeUp)
         {
             wokeUp = true;
             coll.isTrigger = false;

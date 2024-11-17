@@ -24,7 +24,7 @@ public class SpiderTrap : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            ComTocha();  
+            ComTocha();
         }
     }
 
@@ -39,12 +39,6 @@ public class SpiderTrap : MonoBehaviour
             playerMovement.JumpForce = 0;
             player.collectedTorch = false;
             player.collectedSlingshot = false;
-
-            Debug.Log("Sem tocha");
-        }
-        else
-        {
-            Debug.Log("Com tocha");
         }
     }
     public void SpiderKill()

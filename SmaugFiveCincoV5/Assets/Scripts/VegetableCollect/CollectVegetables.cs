@@ -27,7 +27,6 @@ public class CollectVegetables : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.gameObject.name);
         if (collider.gameObject.CompareTag("Player") && grassPickup.isCarrying)
         {
 
