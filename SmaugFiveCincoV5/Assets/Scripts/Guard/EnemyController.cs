@@ -6,12 +6,20 @@ public class EnemyController : MonoBehaviour
 {
     public GuardData data;
     public Transform player;
+    public PlayerData playerData;
     public float speed = 2.5f;
     private bool isGrounded = false;
     public bool playerInActionArea = false;
     public PlayerSound playerSound;
 
     private Rigidbody2D rb;
+
+
+
+
+    private Vector2 startPoint;
+    private Vector2 endPoint;
+    private bool movingRight = true; // Controle de direção
 
     void Start()
     {
@@ -23,7 +31,7 @@ public class EnemyController : MonoBehaviour
         SeekPlayer();
         ControllState();
         FlipSpriteSide();
-        Sentinel();
+        Patrol();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,14 +50,37 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void Sentinel()
+    void Patrol()
     {
+        if (data.state == GuardData.GuardMovementState.idle && !playerInActionArea)
+        {
+            Debug.Log("anda de um lado para o outro");
 
+
+            // if (movingRight)
+            // {
+            //     rb.velocity = new Vector2(2f, rb.velocity.y);
+
+            //     if (transform.position.x >= endPoint.x)
+            //     {
+            //         movingRight = false; // Inverte a direção
+            //     }
+            // }
+            // else
+            // {
+            //     rb.velocity = new Vector2(-2f, rb.velocity.y);
+
+            //     if (transform.position.x <= startPoint.x)
+            //     {
+            //         movingRight = true; // Inverte a direção
+            //     }
+            // }
+        }
     }
 
     void SeekPlayer()
     {
-        if (data.aggro && playerInActionArea)
+        if (data.aggro && playerInActionArea && !playerData.isHiden)
         {
             Vector2 direction = (player.position - transform.position).normalized;
             rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);

@@ -46,6 +46,7 @@ public class PlayerData : MonoBehaviour
     public bool withTorch = false;
     public bool isInWaterfall = false;
     public bool dead = false;
+    public bool isHiden = false;
 
     public bool collectedSlingshotState;
     public bool collectedTorchState;

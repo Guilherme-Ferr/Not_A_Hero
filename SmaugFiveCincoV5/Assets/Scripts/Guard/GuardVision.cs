@@ -26,7 +26,20 @@ public class GuardVision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && guard.state != GuardData.GuardMovementState.sleeping)
         {
-            guard.aggro = true;
+            PlayerData playerdata = other.gameObject.GetComponent<PlayerData>();
+            if (!playerdata.isHiden)
+            {
+                guard.canSeePlayer = true;
+                guard.aggro = true;
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && guard.state != GuardData.GuardMovementState.sleeping)
+        {
+            guard.canSeePlayer = false;
         }
     }
 }

@@ -17,4 +17,5 @@ public class GuardData : MonoBehaviour
     public FacingSide facingSide = FacingSide.right;
     public GuardMovementState state = GuardMovementState.idle;
     public bool aggro = false;
+    public bool canSeePlayer = false;
 }
