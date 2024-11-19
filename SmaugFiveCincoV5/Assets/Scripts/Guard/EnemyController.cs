@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     public GuardData data;
     public Transform player;
     public PlayerData playerData;
-    public float speed = 2.5f;
+    public float speed = 3.7f;
     private bool isGrounded = false;
     public bool playerInActionArea = false;
     public PlayerSound playerSound;
@@ -17,9 +17,9 @@ public class EnemyController : MonoBehaviour
 
 
 
-    private Vector2 startPoint;
-    private Vector2 endPoint;
-    private bool movingRight = true; // Controle de direção
+    // public Transform leftPoint;
+    // public Transform rigthPoint;
+    public bool movingRight = true; // Controle de direção
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
         SeekPlayer();
         ControllState();
         FlipSpriteSide();
-        Patrol();
+        // Patrol();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,31 +50,53 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    // /// <summary>
+    // /// Sent when another object enters a trigger collider attached to this
+    // /// object (2D physics only).
+    // /// </summary>
+    // /// <param name="other">The other Collider2D involved in this collision.</param>
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.gameObject.name == "Patrol Point Left")
+    //     {
+    //         movingRight = true;
+    //         Debug.Log(movingRight);
+    //     }
+    //     else if (other.gameObject.name == "Patrol Point Rigth")
+    //     {
+    //         movingRight = false;
+    //         Debug.Log(movingRight);
+    //     }
+    // }
+
     void Patrol()
     {
-        if (data.state == GuardData.GuardMovementState.idle && !playerInActionArea)
+        if (!data.aggro && !playerInActionArea)
         {
-            Debug.Log("anda de um lado para o outro");
+            data.state = GuardData.GuardMovementState.running;
 
+            if (movingRight)
+            {
+                rb.velocity = new Vector2(2f, rb.velocity.y);
 
-            // if (movingRight)
-            // {
-            //     rb.velocity = new Vector2(2f, rb.velocity.y);
+                // if (transform.position.x >= leftPoint.position.x)
+                // {
+                //     movingRight = false; // Inverte a direção
+                // }
+                // data.facingSide = GuardData.FacingSide.left;
 
-            //     if (transform.position.x >= endPoint.x)
-            //     {
-            //         movingRight = false; // Inverte a direção
-            //     }
-            // }
-            // else
-            // {
-            //     rb.velocity = new Vector2(-2f, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-2f, rb.velocity.y);
 
-            //     if (transform.position.x <= startPoint.x)
-            //     {
-            //         movingRight = true; // Inverte a direção
-            //     }
-            // }
+                // if (transform.position.x <= rigthPoint.position.x)
+                // {
+                //     movingRight = true; // Inverte a direção
+                // }
+
+                // data.facingSide = GuardData.FacingSide.left;
+            }
         }
     }
 
@@ -124,7 +146,8 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                data.state = GuardData.GuardMovementState.idle;
+                // data.state = GuardData.GuardMovementState.running;
+                Patrol();
             }
         }
     }
