@@ -11,15 +11,8 @@ public class EnemyController : MonoBehaviour
     private bool isGrounded = false;
     public bool playerInActionArea = false;
     public PlayerSound playerSound;
-
     private Rigidbody2D rb;
-
-
-
-
-    // public Transform leftPoint;
-    // public Transform rigthPoint;
-    public bool movingRight = true; // Controle de direção
+    public bool movingRight = true;
 
     void Start()
     {
@@ -31,7 +24,6 @@ public class EnemyController : MonoBehaviour
         SeekPlayer();
         ControllState();
         FlipSpriteSide();
-        // Patrol();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -50,53 +42,26 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // /// <summary>
-    // /// Sent when another object enters a trigger collider attached to this
-    // /// object (2D physics only).
-    // /// </summary>
-    // /// <param name="other">The other Collider2D involved in this collision.</param>
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.name == "Patrol Point Left")
-    //     {
-    //         movingRight = true;
-    //         Debug.Log(movingRight);
-    //     }
-    //     else if (other.gameObject.name == "Patrol Point Rigth")
-    //     {
-    //         movingRight = false;
-    //         Debug.Log(movingRight);
-    //     }
-    // }
-
     void Patrol()
     {
-        if (!data.aggro && !playerInActionArea)
+        if (!data.aggro || !playerInActionArea)
         {
             data.state = GuardData.GuardMovementState.running;
 
             if (movingRight)
             {
                 rb.velocity = new Vector2(2f, rb.velocity.y);
-
-                // if (transform.position.x >= leftPoint.position.x)
-                // {
-                //     movingRight = false; // Inverte a direção
-                // }
-                // data.facingSide = GuardData.FacingSide.left;
-
+                data.facingSide = GuardData.FacingSide.right;
             }
             else
             {
                 rb.velocity = new Vector2(-2f, rb.velocity.y);
-
-                // if (transform.position.x <= rigthPoint.position.x)
-                // {
-                //     movingRight = true; // Inverte a direção
-                // }
-
-                // data.facingSide = GuardData.FacingSide.left;
+                data.facingSide = GuardData.FacingSide.left;
             }
+        }
+        else
+        {
+            data.state = GuardData.GuardMovementState.idle;
         }
     }
 
@@ -146,7 +111,6 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                // data.state = GuardData.GuardMovementState.running;
                 Patrol();
             }
         }
