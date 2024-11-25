@@ -13,6 +13,7 @@ public class PlayerHide : MonoBehaviour
             PlayerData playerdata = other.gameObject.GetComponent<PlayerData>();
 
             playerdata.isHiden = true;
+            playerdata.gameObject.layer = LayerMask.NameToLayer("HiddenPlayer");
         }
     }
 
@@ -23,6 +24,9 @@ public class PlayerHide : MonoBehaviour
             PlayerData playerdata = other.gameObject.GetComponent<PlayerData>();
 
             playerdata.isHiden = false;
+
+            playerdata.gameObject.layer = LayerMask.NameToLayer("Player");
+
         }
     }
 }

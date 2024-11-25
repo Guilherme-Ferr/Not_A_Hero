@@ -27,9 +27,9 @@ TagManager:
   - Terrain
   - Grass
   - Ground
-  - Enemy
+  - HiddenPlayer
   - Player
-  - 
+  - Enemy
   - 
   - 
   - 

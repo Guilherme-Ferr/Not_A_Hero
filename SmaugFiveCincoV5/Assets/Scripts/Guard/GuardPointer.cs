@@ -12,7 +12,6 @@ public class GuardPointer : MonoBehaviour
         {
             enemyController.movingRight = !enemyController.movingRight;
 
-
             if (enemyController.data.facingSide == GuardData.FacingSide.right)
             {
                 enemyController.data.facingSide = GuardData.FacingSide.left;
@@ -21,9 +20,6 @@ public class GuardPointer : MonoBehaviour
             {
                 enemyController.data.facingSide = GuardData.FacingSide.right;
             }
-
-
-            Debug.Log(enemyController.movingRight);
         }
     }
 }

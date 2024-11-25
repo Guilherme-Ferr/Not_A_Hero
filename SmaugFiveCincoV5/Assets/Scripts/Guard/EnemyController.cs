@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public PlayerSound playerSound;
     private Rigidbody2D rb;
     public bool movingRight = true;
+    public float jumpForce = 5.0f;
 
     void Start()
     {
@@ -47,15 +48,16 @@ public class EnemyController : MonoBehaviour
         if (!data.aggro || !playerInActionArea)
         {
             data.state = GuardData.GuardMovementState.running;
+            speed = 2f;
 
             if (movingRight)
             {
-                rb.velocity = new Vector2(2f, rb.velocity.y);
+                rb.velocity = new Vector2(speed, rb.velocity.y);
                 data.facingSide = GuardData.FacingSide.right;
             }
             else
             {
-                rb.velocity = new Vector2(-2f, rb.velocity.y);
+                rb.velocity = new Vector2(-speed, rb.velocity.y);
                 data.facingSide = GuardData.FacingSide.left;
             }
         }
@@ -69,12 +71,16 @@ public class EnemyController : MonoBehaviour
     {
         if (data.aggro && playerInActionArea && !playerData.isHiden)
         {
+            speed = 3.7f;
             Vector2 direction = (player.position - transform.position).normalized;
             rb.velocity = new Vector2(direction.x * speed, rb.velocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            if (rb.bodyType != RigidbodyType2D.Static)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
     }
 
@@ -100,10 +106,26 @@ public class EnemyController : MonoBehaviour
             if (rb.velocity.y > 0.01f)
             {
                 data.state = GuardData.GuardMovementState.jumping;
+                if (movingRight)
+                {
+                    rb.velocity = new Vector2(speed, rb.velocity.y);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(-speed, rb.velocity.y);
+                }
             }
             else if (rb.velocity.y < -0.01f && !isGrounded)
             {
                 data.state = GuardData.GuardMovementState.falling;
+                if (movingRight)
+                {
+                    rb.velocity = new Vector2(speed, rb.velocity.y);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(-speed * 1.1f, rb.velocity.y);
+                }
             }
             else if (Mathf.Abs(rb.velocity.x) > 0.01f)
             {
