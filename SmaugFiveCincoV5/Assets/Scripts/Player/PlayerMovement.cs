@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public bool isPaused;
     private float dirX = 0f;
-    private float runningSpeed = 4f;
+    private float runningSpeed = 3.6f;
     private float walkingSpeed = 3f;
     private float crouchingSpeed = 2f;
     private float jumpForce = 12f;
