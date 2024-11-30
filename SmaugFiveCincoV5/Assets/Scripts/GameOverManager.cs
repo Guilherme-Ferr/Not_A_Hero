@@ -39,6 +39,7 @@ public class GameOverManager : MonoBehaviour
 
     public void GameOver(GameObject gameOverUItoPlay)
     {
+        gameOverUItoClose = gameOverUItoPlay;
         gameOverUItoPlay.SetActive(true);
         Time.timeScale = 0f; // Pausa o jogo
     }
