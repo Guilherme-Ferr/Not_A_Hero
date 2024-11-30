@@ -4574,6 +4574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1209885318}
   tutorialTextMesh: {fileID: 890743712}
+  movementTextMesh: {fileID: 444278170}
   grass: {fileID: 1927695487}
   grassPickup: {fileID: 7956315650617902373}
   totalItemsDelivered: 0
@@ -4610,6 +4611,7 @@ GameObject:
   - component: {fileID: 800057724}
   - component: {fileID: 800057726}
   - component: {fileID: 800057725}
+  - component: {fileID: 800057727}
   m_Layer: 5
   m_Name: Tutorial Image
   m_TagString: Untagged
@@ -4676,6 +4678,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800057723}
   m_CullTransparentMesh: 1
+--- !u!114 &800057727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800057723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825e89bc782648e48b699f6455a7fa2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialTextMesh: {fileID: 444278170}
+  image: {fileID: 800057723}
 --- !u!1 &837736848
 GameObject:
   m_ObjectHideFlags: 0
@@ -17308,7 +17324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1980662057
 MonoBehaviour:
   m_ObjectHideFlags: 0

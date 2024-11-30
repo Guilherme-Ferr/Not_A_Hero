@@ -8,6 +8,7 @@ public class CollectVegetables : MonoBehaviour
 {
     public TextMeshProUGUI textMesh;
     public TextMeshProUGUI tutorialTextMesh;
+    public TextMeshProUGUI movementTextMesh;
     public Transform grass;
     public GrassPickup grassPickup;
 
@@ -33,9 +34,8 @@ public class CollectVegetables : MonoBehaviour
             finishedCollecting = true;
             textMesh.text = "Estenda suas roupas.";
             tutorialTextMesh.text = null;
+            movementTextMesh.text = null;
             grassPickup.DropGrass();
-
-            //tocar som de bau recheado
         }
     }
 }
