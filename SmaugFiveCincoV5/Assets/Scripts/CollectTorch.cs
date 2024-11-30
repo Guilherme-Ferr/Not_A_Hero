@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CollectTorch : MonoBehaviour
 {
     public Transform torchLight;
     public AudioSource keyCollectSoundEffect;
+    public TextMeshProUGUI torchQuantity;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -20,6 +22,7 @@ public class CollectTorch : MonoBehaviour
             keyCollectSoundEffect.Play();
             torchLight.gameObject.SetActive(false);
             transform.gameObject.SetActive(false);
+            torchQuantity.text = "1";
         }
     }
 
