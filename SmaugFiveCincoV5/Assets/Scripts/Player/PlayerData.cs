@@ -52,6 +52,7 @@ public class PlayerData : MonoBehaviour
     public bool collectedTorchState;
     public bool collectedKeyState;
     public Vector3 savedPosition;
+    public PlayerMovement movement;
 
     public void SaveState(PlayerData state)
     {
@@ -70,5 +71,6 @@ public class PlayerData : MonoBehaviour
         dead = false;
         transform.position = savedPosition;
         collectTorch.resetTorch();
+        movement.rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }

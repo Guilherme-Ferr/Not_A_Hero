@@ -6,25 +6,36 @@ using UnityEngine.SceneManagement;
 public class SpiderTrap : MonoBehaviour
 {
     public PlayerData player;
-    public PlayerMovement playerMovement;
     private Animator anim;
     public GameObject kill;
-    public FadeManager fadeManager;
-
+    // public FadeManager fadeManager;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
-        fadeManager.FadeOut();
+        // anim.Play("spider", 0, 0f);
+        // anim.speed = 0f; // Pausa no primeiro frame
+    }
+
+    public void ResetSpider()
+    {
+        anim.Play("spider", 0, 0f);
+        anim.speed = 0f;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.gameObject.CompareTag("Player"))
         {
             ComTocha();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && !player.withTorch)
+        {
+            player.movement.rb.bodyType = RigidbodyType2D.Static;
         }
     }
 
@@ -33,14 +44,11 @@ public class SpiderTrap : MonoBehaviour
         if (!player.withTorch)
         {
             anim.SetTrigger("spider");
-            playerMovement.WalkingSpeed = 0;
-            playerMovement.RunningSpeed = 0;
-            playerMovement.CrouchingSpeed = 0;
-            playerMovement.JumpForce = 0;
+            anim.speed = 1f;
             player.collectedTorch = false;
-            player.collectedSlingshot = false;
         }
     }
+
     public void SpiderKill()
     {
         kill.SetActive(true);

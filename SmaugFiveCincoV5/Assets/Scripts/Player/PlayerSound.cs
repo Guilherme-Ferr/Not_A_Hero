@@ -45,10 +45,8 @@ public class PlayerSound : MonoBehaviour
             PlayerData.PlayerMovementState.landingTorch or
             PlayerData.PlayerMovementState.shootingSlingshotTorch or
             PlayerData.PlayerMovementState.climbing or
-            PlayerData.PlayerMovementState.carryingObject
-            // or
-            // PlayerData.PlayerMovementState.climbingTorch 
-            => PlayerNoise.mid,
+            PlayerData.PlayerMovementState.carryingObject or
+            PlayerData.PlayerMovementState.climbingTorch => PlayerNoise.mid,
             PlayerData.PlayerMovementState.runningSlingshot or
             PlayerData.PlayerMovementState.runningTorch or
             PlayerData.PlayerMovementState.shootingSlingshotTorch => PlayerNoise.loud,

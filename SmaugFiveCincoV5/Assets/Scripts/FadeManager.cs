@@ -51,6 +51,9 @@ public class FadeManager : MonoBehaviour
             // Restaurar posição e estado
             player.SetState();
             gameOverUItoClose.SetActive(false);
+            Color colorFade = fadeImage.color;
+            colorFade.a = 0f;
+            fadeImage.color = colorFade;
         }
         else
         {
