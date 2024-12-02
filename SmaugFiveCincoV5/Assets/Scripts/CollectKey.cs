@@ -15,20 +15,25 @@ public class CollectKey : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            if (!alreadyCollected)
-            {
-                player = collider.gameObject.GetComponent<PlayerData>();
-                player.collectedKey = true;
-                keyCollectSoundEffect.Play();
-                objectiveTextMesh.text = "Volte para a saida do andar.";
-                alreadyCollected = true;
-                // keyCounter.keys++;
-            }
+            player = collider.gameObject.GetComponent<PlayerData>();
+            player.collectedKey = true;
+            keyCollectSoundEffect.Play();
+            objectiveTextMesh.text = "Volte para a saida do andar.";
+            alreadyCollected = true;
         }
     }
 
     void Update()
     {
         keyCounter.keys = player.collectedKey ? 1 : 0;
+
+        if (player.collectedKey == true)
+        {
+            objectiveTextMesh.text = "Volte para a saida do andar.";
+        }
+        else
+        {
+            objectiveTextMesh.text = "Encontre a chave do portão para o proximo andar.";
+        }
     }
 }
