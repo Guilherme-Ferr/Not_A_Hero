@@ -9,6 +9,7 @@ public class CollectKey : MonoBehaviour
     public TextMeshProUGUI objectiveTextMesh;
     public KeyCounter keyCounter;
     private bool alreadyCollected = false;
+    private PlayerData player;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -16,13 +17,18 @@ public class CollectKey : MonoBehaviour
         {
             if (!alreadyCollected)
             {
-                PlayerData player = collider.gameObject.GetComponent<PlayerData>();
+                player = collider.gameObject.GetComponent<PlayerData>();
                 player.collectedKey = true;
                 keyCollectSoundEffect.Play();
                 objectiveTextMesh.text = "Volte para a saida do andar.";
                 alreadyCollected = true;
-                keyCounter.keys++;
+                // keyCounter.keys++;
             }
         }
+    }
+
+    void Update()
+    {
+        keyCounter.keys = player.collectedKey ? 1 : 0;
     }
 }
